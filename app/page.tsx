@@ -1,4 +1,4 @@
-import { BlogPosts } from 'app/components/posts'
+import WorkExperience from './components/work'
 
 export default function Page() {
   return (
@@ -11,8 +11,9 @@ export default function Page() {
         Specialize in tokenomics, security audits, and blockchain research. 
         Building tools for crypto due diligence.
       </p>
+
       <div className="my-8">
-        <BlogPosts />
+        <WorkExperience />
       </div>
     </section>
   )
