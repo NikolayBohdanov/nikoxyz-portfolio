@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Nikolay Bohdanov',
   description: 'DeFi analyst & smart contract auditor',
   icons: {
-    icon: '/favicon.ico',  // ← добавь эту строку
+    icon: '/favicon.svg',
   },
   openGraph: {
     title: 'My Portfolio',
