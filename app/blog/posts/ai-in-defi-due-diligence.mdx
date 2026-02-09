@@ -1,0 +1,87 @@
+---
+title: 'AI in DeFi Due Diligence: From Hours to Minutes'
+publishedAt: '2026-02-10'
+summary: 'How LLMs are revolutionizing crypto research—automating code audits, detecting red flags, and synthesizing community sentiment at scale.'
+---
+
+Due diligence in DeFi used to be a full-time job. A single project required:
+
+- Reading 50+ pages of documentation
+- Manually reviewing smart contract code
+- Monitoring Discord and Twitter for weeks
+- Tracking wallet movements across chains
+
+Today, AI agents can compress this into minutes. Here's how I use LLMs in my research workflow.
+
+## The Research Stack
+
+### 1. Automated Document Analysis
+
+Whitepapers are marketing documents. The real information lives in GitHub repos, governance forums, and obscure Medium posts.
+
+I feed project documentation into a retrieval-augmented generation (RAG) pipeline that:
+
+- Extracts tokenomics parameters
+- Identifies vesting schedules and unlock dates
+- Flags discrepancies between marketing claims and technical reality
+
+### 2. Smart Contract Auditing
+
+AI won't replace human auditors, but it's an incredible first-pass filter. I use specialized models to:
+
+- Detect common vulnerabilities (reentrancy, unchecked transfers)
+- Compare implementations against known secure patterns
+- Identify centralization risks (owner privileges, upgradeability)
+
+Example red flag AI catches instantly:
+```solidity
+function emergencyWithdraw() external onlyOwner {
+    payable(owner).transfer(address(this).balance);
+    // AI flags: No timelock, unlimited access to funds
+}
+```
+
+### 3. Sentiment Synthesis
+
+Community sentiment analysis used to mean reading thousands of Discord messages. Now, LLMs can:
+
+- Summarize key concerns from governance discussions
+- Detect coordinated FUD campaigns vs. genuine criticism
+- Track sentiment shifts around major announcements
+
+## Real-World Example
+
+Last month, I analyzed a new L2 project in under 20 minutes:
+
+| Task | Traditional Time | With AI | Time Saved |
+|------|-----------------|---------|------------|
+| Documentation review | 2 hours | 5 minutes | 95% |
+| Code vulnerability scan | 4 hours | 10 minutes | 96% |
+| Community sentiment | 3 hours | 5 minutes | 97% |
+| **Total** | **9 hours** | **20 minutes** | **96%** |
+
+The AI flagged a concerning centralization vector the whitepaper glossed over. I passed on the investment—two weeks later, the team abused that exact privilege.
+
+## Limitations and Risks
+
+AI is powerful but dangerous if trusted blindly:
+
+- **Hallucinations**: Models can confidently cite non-existent vulnerabilities
+- **Training cutoff**: New attack vectors may not be in the model's knowledge
+- **Context gaps**: AI misses the "vibe" of a community that humans sense
+
+**Rule of thumb**: Use AI to accelerate research, not replace judgment. Always verify critical claims.
+
+## The Future
+
+We're building toward fully autonomous research agents that:
+
+- Continuously monitor project health
+- Alert on anomalous on-chain activity
+- Generate real-time risk scores
+
+The human role shifts from data gathering to high-level strategy and validation.
+
+---
+
+*Tools I use: Claude for analysis, OpenAI for structured extraction, custom fine-tuned models for code review.*
