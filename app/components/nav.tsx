@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Github, Twitter, Linkedin } from 'lucide-react'
 
 const navItems = {
   '/': {
@@ -7,31 +8,47 @@ const navItems = {
   '/blog': {
     name: 'blog',
   },
-  'https://vercel.com/templates/next.js/portfolio-starter-kit': {
-    name: 'deploy',
-  },
 }
+
+const socialLinks = [
+  { href: 'https://github.com/nikoxyz', icon: Github, label: 'GitHub' },
+  { href: 'https://twitter.com/nikoxyz', icon: Twitter, label: 'Twitter' },
+  { href: 'https://linkedin.com/in/nikoxyz', icon: Linkedin, label: 'LinkedIn' },
+]
 
 export function Navbar() {
   return (
     <aside className="-ml-[8px] mb-16 tracking-tight">
       <div className="lg:sticky lg:top-20">
         <nav
-          className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+          className="flex flex-row items-center justify-between relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
           id="nav"
         >
-          <div className="flex flex-row space-x-0 pr-10">
-            {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
-                >
-                  {name}
-                </Link>
-              )
-            })}
+          <div className="flex flex-row space-x-0">
+            {Object.entries(navItems).map(([path, { name }]) => (
+              <Link
+                key={path}
+                href={path}
+                className="transition-all hover:text-indigo-500 dark:hover:text-indigo-400 flex align-middle relative py-1 px-2 m-1"
+              >
+                {name}
+              </Link>
+            ))}
+          </div>
+          
+          <div className="flex items-center gap-1">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+                aria-label={link.label}
+              >
+                <link.icon className="w-4 h-4" />
+              </a>
+            ))}
           </div>
         </nav>
       </div>

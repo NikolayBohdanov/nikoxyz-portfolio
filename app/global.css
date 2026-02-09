@@ -1,11 +1,22 @@
 @import 'tailwindcss';
 
 ::selection {
-  background-color: #47a3f3;
+  background-color: #6366f1;
   color: #fefefe;
 }
 
 :root {
+  /* Crypto Design System Colors */
+  --background: #ffffff;
+  --foreground: #0a0a0f;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --border: #e5e5e5;
+  --accent: #6366f1;
+  --accent-foreground: #fafafa;
+  --accent-cyan: #22d3ee;
+  
+  /* Syntax Highlighting */
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -15,27 +26,75 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+  
+  /* Custom Properties */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-elevated: #13131f;
+  --color-bg-hover: #1a1a2e;
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-accent: #22d3ee;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+}
+
+.dark {
+  --background: #0a0a0f;
+  --foreground: #f8fafc;
+  --muted: #13131f;
+  --muted-foreground: #94a3b8;
+  --border: #1a1a2e;
+  --accent: #6366f1;
+  --accent-foreground: #fafafa;
+  
+  /* Syntax Highlighting Dark */
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  html {
-    color-scheme: dark;
+  :root:not(.light) {
+    --background: #0a0a0f;
+    --foreground: #f8fafc;
+    --muted: #13131f;
+    --muted-foreground: #94a3b8;
+    --border: #1a1a2e;
   }
 }
 
 html {
   min-width: 360px;
+  scroll-behavior: smooth;
 }
 
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Gradient Text Utility */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Effects */
+.glow-indigo {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.2);
+}
+
+/* Prose Styles */
 .prose .anchor {
   @apply absolute invisible no-underline;
-
   margin-left: -1em;
   padding-right: 0.5em;
   width: 80%;
@@ -79,7 +138,6 @@ html {
 }
 
 .prose img {
-  /* Don't apply styles to next/image */
   @apply m-0;
 }
 
@@ -116,7 +174,6 @@ html {
 }
 
 .prose > :first-child {
-  /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
 }
@@ -126,11 +183,10 @@ pre::-webkit-scrollbar {
 }
 
 pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Remove Safari input shadow on mobile */
 input[type='text'],
 input[type='email'] {
   -webkit-appearance: none;
@@ -147,4 +203,23 @@ table {
 
 .title {
   text-wrap: balance;
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-md border border-slate-700 bg-transparent px-4 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white;
 }

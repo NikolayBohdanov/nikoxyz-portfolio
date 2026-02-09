@@ -1,61 +1,58 @@
-function ArrowIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
-}
+import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+  
+  const socialLinks = [
+    { href: 'https://github.com/nikoxyz', icon: Github, label: 'GitHub' },
+    { href: 'https://twitter.com/nikoxyz', icon: Twitter, label: 'Twitter' },
+    { href: 'https://linkedin.com/in/nikoxyz', icon: Linkedin, label: 'LinkedIn' },
+    { href: 'mailto:nikolay@twitterscore.io', icon: Mail, label: 'Email' },
+  ]
+
   return (
     <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/vercel/next.js"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://x.com/your_handle"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">X</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.linkedin.com/in/your_handle"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">LinkedIn</p>
-          </a>
-        </li>
-      </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
-      </p>
+      <div className="mt-16 pt-8 border-t border-slate-800/50">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Logo */}
+          <div className="flex items-center">
+            <span className="font-bold gradient-text">Nikolay</span>
+          </div>
+          
+          {/* Quick Links */}
+          <div className="flex gap-6 text-sm">
+            <a href="/privacy" className="text-slate-500 hover:text-slate-300 transition-colors">
+              Privacy
+            </a>
+            <a href="/resume.pdf" className="text-slate-500 hover:text-slate-300 transition-colors">
+              Resume
+            </a>
+            <a href="mailto:nikolay@twitterscore.io" className="text-slate-500 hover:text-slate-300 transition-colors">
+              Contact
+            </a>
+          </div>
+          
+          {/* Social Icons */}
+          <div className="flex gap-3">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-slate-900 text-slate-400 hover:text-indigo-400 hover:bg-slate-800 transition-all"
+                aria-label={link.label}
+              >
+                <link.icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <p className="mt-8 text-center text-sm text-slate-600">
+          © {currentYear} Nikolay Bohdanov. All rights reserved.
+        </p>
+      </div>
     </footer>
   )
 }
