@@ -37,7 +37,7 @@ const projects: Project[] = [
 export function Projects() {
   return (
     <section>
-      <h2 className="mb-4 text-xl font-semibold">Projects</h2>
+      <h2 className="section-title">Projects</h2>
       <div className="grid gap-6">
         {projects.map((project) => (
           <a
@@ -45,13 +45,13 @@ export function Projects() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400/50 dark:hover:border-neutral-400/50 transition-all hover:bg-neutral-50 dark:hover:bg-neutral-900/50 card-shimmer hover-lift"
+            className="group block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 card-hover"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-semibold text-lg group-hover:text-neutral-400 transition-colors">
+              <h3 className="font-semibold text-lg text-black dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors">
                 {project.name}
               </h3>
-              <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-neutral-400 transition-colors" />
+              <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors" />
             </div>
             <p className="mt-2 text-neutral-600 dark:text-neutral-400 text-sm">
               {project.description}
@@ -60,7 +60,7 @@ export function Projects() {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover-shimmer"
+                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700"
                 >
                   {tech}
                 </span>

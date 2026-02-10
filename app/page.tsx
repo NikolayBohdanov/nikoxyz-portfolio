@@ -9,16 +9,12 @@ import { NewsletterSignup } from './components/newsletter-signup'
 export default function Page() {
   return (
     <section className="relative">
-      {/* Background glow */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-neutral-400/10 dark:bg-neutral-400/10 rounded-full blur-3xl pointer-events-none"></div>
-      
       <div className="relative z-10">
         {/* Hero Section */}
         <div className="mb-8 text-center">
-          {/* Avatar with gradient glow */}
           <div className="inline-block mb-6">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-neutral-400 to-neutral-300 dark:from-neutral-400 dark:to-neutral-300 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-neutral-400 to-neutral-500 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
               <Image
                 src="/avatar.png"
                 alt="Nikolay - Crypto Researcher"
@@ -30,7 +26,7 @@ export default function Page() {
             </div>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-neutral-900 dark:text-neutral-100">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-black dark:text-white">
             Hi, I'm <span className="gradient-text">Nikolay</span>
           </h1>
           
@@ -44,7 +40,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="max-w-none">
           <p className="mb-4 text-lg text-neutral-800 dark:text-neutral-200">
             Crypto-native Product Manager and DeFi enthusiast with deep expertise in tokenized ecosystems, 
             on-chain analytics, and social-fi platforms. Currently leading product development at TwitterScore, 
@@ -66,23 +62,23 @@ export default function Page() {
         </div>
 
         {/* Stats Strip */}
-        <section className="border-y border-neutral-200 dark:border-neutral-800/50 bg-neutral-100 dark:bg-neutral-900/30 my-8 -mx-4 px-4 py-8">
+        <section className="stats-section my-8 -mx-4 px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <p className="text-3xl font-bold text-neutral-800 dark:text-neutral-200">50+</p>
-              <p className="text-neutral-600 dark:text-neutral-500 text-sm">Protocols</p>
+              <p className="stat-number">50+</p>
+              <p className="stat-label">Protocols</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-neutral-800 dark:text-neutral-200">5+</p>
-              <p className="text-neutral-600 dark:text-neutral-500 text-sm">Years</p>
+              <p className="stat-number">5+</p>
+              <p className="stat-label">Years</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-neutral-800 dark:text-neutral-200">100+</p>
-              <p className="text-neutral-600 dark:text-neutral-500 text-sm">Reports</p>
+              <p className="stat-number">100+</p>
+              <p className="stat-label">Reports</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-neutral-800 dark:text-neutral-200">10+</p>
-              <p className="text-neutral-600 dark:text-neutral-500 text-sm">Projects</p>
+              <p className="stat-number">10+</p>
+              <p className="stat-label">Projects</p>
             </div>
           </div>
         </section>
