@@ -10,18 +10,24 @@ import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: 'Nikolay Bohdanov',
-  description: 'DeFi analyst & smart contract auditor',
+  title: 'Nikolay Bohdanov | Crypto Researcher & Product Manager',
+  description: 'Crypto-native Product Manager and DeFi enthusiast with deep expertise in tokenized ecosystems, on-chain analytics, and social-fi platforms.',
   icons: {
     icon: '/favicon.svg',
   },
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Nikolay Bohdanov | Crypto Researcher & Product Manager',
+    description: 'Crypto-native Product Manager and DeFi enthusiast. Building TwitterScore and exploring the intersection of AI, social graphs, and blockchain.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Nikolay Bohdanov',
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nikolay Bohdanov | Crypto Researcher & Product Manager',
+    description: 'Crypto-native Product Manager and DeFi enthusiast. Building TwitterScore and exploring the intersection of AI, social graphs, and blockchain.',
+    creator: '@nikoxyz',
   },
   robots: {
     index: true,
@@ -36,7 +42,7 @@ export const metadata: Metadata = {
   },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
+const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
 
 export default function RootLayout({
   children,
