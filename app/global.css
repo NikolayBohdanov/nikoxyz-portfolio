@@ -1,57 +1,30 @@
 @import 'tailwindcss';
 
-::selection {
-  background-color: var(--accent);
-  color: var(--accent-foreground);
-}
-
-/* Light Mode - Clean Black & White */
-:root {
-  --background: #ffffff;
-  --foreground: #000000;
-  --muted: #f5f5f5;
-  --muted-foreground: #525252;
-  --border: #e5e5e5;
-  --accent: #171717;
-  --accent-foreground: #ffffff;
-  
-  /* Syntax Highlighting Light */
-  --sh-class: #1e40af;
-  --sh-identifier: #1f2937;
-  --sh-sign: #6b7280;
-  --sh-string: #047857;
-  --sh-keyword: #dc2626;
-  --sh-comment: #6b7280;
-  --sh-jsxliterals: #4f46e5;
-  --sh-property: #ea580c;
-  --sh-entity: #ea580c;
-}
-
-/* Dark Mode - Metallic */
-.dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --muted: #171717;
-  --muted-foreground: #a3a3a3;
-  --border: #262626;
-  --accent: #d4d4d8;
-  --accent-foreground: #0a0a0a;
-  
-  /* Syntax Highlighting Dark */
-  --sh-class: #a3a3a3;
-  --sh-identifier: #d4d4d4;
-  --sh-keyword: #a3a3a3;
-  --sh-string: #86efac;
-}
-
+/* Simple Light/Dark mode without CSS variables conflicts */
 html {
   min-width: 360px;
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark body {
+  background-color: #0a0a0a;
+  color: #fafafa;
+}
+
+/* Selection */
+::selection {
+  background-color: #171717;
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background-color: #d4d4d8;
+  color: #0a0a0a;
 }
 
 /* Gradient Text */
@@ -69,114 +42,7 @@ body {
   background-clip: text;
 }
 
-/* Prose - Light Mode Readable */
-.prose {
-  color: #171717;
-}
-
-.dark .prose {
-  color: #d4d4d4;
-}
-
-.prose p {
-  color: #262626;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.dark .prose p {
-  color: #d4d4d4;
-}
-
-.prose strong {
-  color: #000000;
-  font-weight: 600;
-}
-
-.dark .prose strong {
-  color: #ffffff;
-}
-
-.prose h1, .prose h2, .prose h3, .prose h4 {
-  color: #000000;
-  font-weight: 600;
-}
-
-.dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4 {
-  color: #ffffff;
-}
-
-.prose a {
-  color: #171717;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.dark .prose a {
-  color: #d4d4d8;
-}
-
-.prose ul, .prose ol {
-  color: #404040;
-}
-
-.dark .prose ul, .dark .prose ol {
-  color: #a3a3a3;
-}
-
-.prose code {
-  background-color: #f5f5f5;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
-  color: #171717;
-}
-
-.dark .prose code {
-  background-color: #262626;
-  color: #d4d4d4;
-}
-
-.prose pre {
-  background-color: #f5f5f5;
-  border: 1px solid #e5e5e5;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  overflow-x: auto;
-}
-
-.dark .prose pre {
-  background-color: #171717;
-  border-color: #262626;
-}
-
-/* Card Styles - Light Mode */
-.card {
-  background-color: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 0.75rem;
-}
-
-.dark .card {
-  background-color: #171717;
-  border-color: #262626;
-}
-
-.card-hover {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  border-color: #d4d4d4;
-}
-
-.dark .card-hover:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  border-color: #404040;
-}
-
-/* Stats Section - Light Mode */
+/* Stats Section */
 .stats-section {
   background-color: #f5f5f5;
   border-top: 1px solid #e5e5e5;
@@ -207,7 +73,7 @@ body {
   color: #a3a3a3;
 }
 
-/* Skills Cards - Light Mode */
+/* Skills Cards */
 .skills-card {
   background-color: #ffffff;
   border: 1px solid #e5e5e5;
@@ -222,12 +88,10 @@ body {
 
 .skills-card:hover {
   border-color: #d4d4d4;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .dark .skills-card:hover {
   border-color: #404040;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .skills-title {
@@ -267,7 +131,21 @@ body {
   background-color: #262626;
 }
 
-/* Button Styles */
+/* Card Hover */
+.card-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Buttons */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -287,10 +165,6 @@ body {
 .dark .btn-primary {
   background: linear-gradient(135deg, #e5e5e5 0%, #a3a3a3 100%);
   color: #000000;
-}
-
-.dark .btn-primary:hover {
-  background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 100%);
 }
 
 .btn-secondary {
@@ -322,7 +196,7 @@ body {
   color: #ffffff;
 }
 
-/* Section Headers */
+/* Section Title */
 .section-title {
   color: #000000;
   font-size: 1.5rem;
@@ -334,62 +208,25 @@ body {
   color: #ffffff;
 }
 
-/* Nav Link Styles */
-.nav-link {
-  color: #525252;
-  transition: color 0.2s;
+/* Prose */
+.prose p {
+  color: #262626;
 }
 
-.nav-link:hover {
+.dark .prose p {
+  color: #d4d4d4;
+}
+
+.prose strong {
   color: #000000;
+  font-weight: 600;
 }
 
-.dark .nav-link {
-  color: #a3a3a3;
-}
-
-.dark .nav-link:hover {
+.dark .prose strong {
   color: #ffffff;
 }
 
-/* Footer Styles */
-.footer-text {
-  color: #525252;
-}
-
-.dark .footer-text {
-  color: #a3a3a3;
-}
-
-/* Glow Effects - Dark Mode Only */
-.glow-metallic {
-  box-shadow: 0 0 40px rgba(212, 212, 216, 0.15);
-}
-
-.dark .glow-silver {
-  box-shadow: 0 0 50px rgba(228, 228, 231, 0.12);
-}
-
-/* Shimmer Animations */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes metallic-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(212, 212, 216, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(228, 228, 231, 0.3);
-  }
-}
-
-/* Hide scrollbar */
+/* Scrollbar hide */
 pre::-webkit-scrollbar {
   display: none;
 }
@@ -400,22 +237,8 @@ pre {
 }
 
 /* Input reset */
-input[type='text'],
-input[type='email'] {
+input, textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-
-/* Table styles */
-table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-/* Title balance */
-.title {
-  text-wrap: balance;
 }

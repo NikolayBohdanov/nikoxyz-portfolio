@@ -14,48 +14,48 @@ export default function Page() {
         <div className="mb-8 text-center">
           <div className="inline-block mb-6">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-neutral-400 to-neutral-500 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
               <Image
                 src="/avatar.png"
                 alt="Nikolay - Crypto Researcher"
                 width={128}
                 height={128}
-                className="relative rounded-full border-2 border-neutral-200 dark:border-neutral-800"
+                className="relative rounded-full border-2 border-gray-200 dark:border-gray-800"
                 priority
               />
             </div>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-black dark:text-white">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Hi, I'm <span className="gradient-text">Nikolay</span>
           </h1>
           
-          <p className="text-xl text-neutral-800 dark:text-neutral-400 mb-4">
+          <p className="text-xl text-gray-700 dark:text-gray-400 mb-4">
             Crypto Researcher & Product Manager
           </p>
           
-          <p className="text-neutral-800 dark:text-neutral-500 max-w-lg mx-auto">
+          <p className="text-gray-700 dark:text-gray-500 max-w-lg mx-auto">
             Specializing in tokenomics, DeFi protocols, and on-chain analytics.
             I help teams build sustainable crypto products.
           </p>
         </div>
 
-        <div className="max-w-none px-4 md:px-0">
-          <p className="mb-4 text-lg text-black dark:text-white">
+        <div className="max-w-none px-4 md:px-0 prose">
+          <p className="mb-4 text-lg">
             Crypto-native Product Manager and DeFi enthusiast with deep expertise in tokenized ecosystems, 
             on-chain analytics, and social-fi platforms. Currently leading product development at TwitterScore, 
             where I'm building the next generation of crypto research and due diligence tools that help 
             investors discover alpha through social data.
           </p>
           
-          <p className="mb-4 text-black dark:text-white">
+          <p className="mb-4">
             Passionate about the intersection of AI, social graphs, and blockchain technology. 
             I believe everything will become tokenized, and I'm dedicated to creating products that 
             bridge the gap between complex on-chain data and actionable insights for both retail and 
             institutional users.
           </p>
           
-          <p className="mb-8 text-black dark:text-white">
+          <p className="mb-8">
             When I'm not shipping features, you'll find me farming yields across DeFi protocols, 
             analyzing tokenomics, or exploring emerging L2 ecosystems.
           </p>
