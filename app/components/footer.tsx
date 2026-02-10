@@ -14,12 +14,12 @@ export default function Footer() {
     <footer className="mb-16">
       <div className="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <!-- Logo -->
+          {/* Logo */}
           <div className="flex items-center">
             <span className="font-bold gradient-text">Nikolay</span>
           </div>
           
-          <!-- Quick Links -->
+          {/* Quick Links */}
           <div className="flex gap-6 text-sm">
             <a href="/privacy" className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
               Privacy
@@ -32,7 +32,7 @@ export default function Footer() {
             </a>
           </div>
           
-          <!-- Social Icons -->
+          {/* Social Icons */}
           <div className="flex gap-3">
             {socialLinks.map((link) => (
               <a
