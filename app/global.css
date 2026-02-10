@@ -89,13 +89,13 @@ body {
 }
 
 .prose p {
-  color: #404040;
+  color: #262626;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 .dark .prose p {
-  color: #a3a3a3;
+  color: #d4d4d4;
 }
 
 .prose strong {

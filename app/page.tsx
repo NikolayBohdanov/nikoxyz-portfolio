@@ -41,21 +41,21 @@ export default function Page() {
         </div>
 
         <div className="max-w-none">
-          <p className="mb-4 text-lg text-neutral-800 dark:text-neutral-200">
+          <p className="mb-4 text-lg text-neutral-900 dark:text-neutral-100">
             Crypto-native Product Manager and DeFi enthusiast with deep expertise in tokenized ecosystems, 
             on-chain analytics, and social-fi platforms. Currently leading product development at TwitterScore, 
             where I'm building the next generation of crypto research and due diligence tools that help 
             investors discover alpha through social data.
           </p>
           
-          <p className="mb-4 text-neutral-700 dark:text-neutral-300">
+          <p className="mb-4 text-neutral-800 dark:text-neutral-200">
             Passionate about the intersection of AI, social graphs, and blockchain technology. 
             I believe everything will become tokenized, and I'm dedicated to creating products that 
             bridge the gap between complex on-chain data and actionable insights for both retail and 
             institutional users.
           </p>
           
-          <p className="mb-8 text-neutral-700 dark:text-neutral-300">
+          <p className="mb-8 text-neutral-800 dark:text-neutral-200">
             When I'm not shipping features, you'll find me farming yields across DeFi protocols, 
             analyzing tokenomics, or exploring emerging L2 ecosystems.
           </p>
