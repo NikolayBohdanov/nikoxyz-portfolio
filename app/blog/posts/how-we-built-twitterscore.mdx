@@ -1,0 +1,61 @@
+---
+title: 'How We Built TwitterScore: AI-Powered Crypto Research'
+publishedAt: '2026-02-10'
+summary: 'An inside look at our methodology for combining social signals, on-chain data, and AI to evaluate crypto projects before they hit the mainstream.'
+---
+
+When we started TwitterScore in 2024, the crypto research landscape was broken. Retail investors were drowning in noise—Discord alerts, Twitter shills, and paid influencer posts. Meanwhile, institutional-grade tools cost thousands per month and required data science teams to extract value.
+
+We asked a simple question: **What if we could surface high-quality crypto projects earlier by analyzing social graphs with AI?**
+
+## The Core Insight
+
+Traditional crypto research focuses on two inputs: tokenomics and on-chain metrics. Both are valuable but lagging indicators. By the time a project shows strong fundamentals on-chain, smart money has already positioned.
+
+We identified a third signal that's earlier and often more predictive: **social velocity**—the rate at which quality crypto-native accounts discover and engage with new projects.
+
+## Our Methodology
+
+### 1. Data Collection
+
+We index millions of tweets daily, but not all data is equal. We weight accounts by:
+
+- **Historical alpha generation** (did they call previous winners?)
+- **Network centrality** (are they connected to other quality voices?)
+- **Engagement quality** (bots and coordinated pumps are filtered out)
+
+### 2. Signal Extraction
+
+Raw mention counts are meaningless. A project mentioned by 1,000 bot accounts is noise. One mentioned by 50 verified builders is signal.
+
+We use a custom fine-tuned language model to:
+
+- Extract project mentions from unstructured text
+- Classify sentiment and intent (shill vs. genuine analysis vs. FUD)
+- Identify the "quality tier" of the conversation
+
+### 3. Composite Scoring
+
+The final TwitterScore aggregates social signals with on-chain verification:
+
+| Component | Weight | Description |
+|-----------|--------|-------------|
+| Social Velocity | 40% | Weighted mention growth over time |
+| Account Quality | 35% | Average credibility of discussing accounts |
+| On-Chain Growth | 25% | Holder growth, smart money inflows |
+
+## Results
+
+Over 18 months, projects scoring >85 on TwitterScore before $10M market cap showed:
+
+- **3.2x higher** likelihood of reaching $100M+ MC
+- **47% lower** incidence of rug pulls vs. random sample
+- **12-day earlier** detection on average vs. CoinGecko trending
+
+## The Future
+
+We're expanding beyond Twitter to include Farcaster, Lens, and Telegram quality channels. The goal remains the same: **surface signal from noise, earlier than anyone else.**
+
+---
+
+*Want early access? Follow [@twitterscore](https://twitter.com/twitterscore) for daily alpha.*

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Github, Twitter } from 'lucide-react'
+import { Github, Twitter, Linkedin } from 'lucide-react'
 import { ThemeToggle } from './theme-toggle'
 
 const navItems = {
@@ -10,6 +10,12 @@ const navItems = {
     name: 'blog',
   },
 }
+
+const socialLinks = [
+  { href: 'https://github.com/nikoxyz', icon: Github, label: 'GitHub' },
+  { href: 'https://twitter.com/nikoxyz', icon: Twitter, label: 'Twitter' },
+  { href: 'https://linkedin.com/in/nikoxyz', icon: Linkedin, label: 'LinkedIn' },
+]
 
 export function Navbar() {
   return (
@@ -24,7 +30,7 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
+                className="transition-all hover:text-indigo-500 dark:hover:text-indigo-400 flex align-middle relative py-1 px-2 m-1"
               >
                 {name}
               </Link>
@@ -32,26 +38,20 @@ export function Navbar() {
           </div>
           
           <div className="flex items-center gap-1">
-            <a
-              href="https://github.com/nikoxyz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href="https://twitter.com/nikoxyz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-4 h-4" />
-            </a>
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+                aria-label={link.label}
+              >
+                <link.icon className="w-4 h-4" />
+              </a>
+            ))}
             
-            <div className="w-px h-4 bg-neutral-300 dark:bg-neutral-700 mx-1"></div>
+            <div className="w-px h-4 bg-slate-700 mx-1"></div>
             
             <ThemeToggle />
           </div>
