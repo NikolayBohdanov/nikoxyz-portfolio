@@ -45,7 +45,7 @@ export function Projects() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400/50 dark:hover:border-neutral-400/50 transition-all hover:bg-neutral-50 dark:hover:bg-neutral-900/50"
+            className="group block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400/50 dark:hover:border-neutral-400/50 transition-all hover:bg-neutral-50 dark:hover:bg-neutral-900/50 card-shimmer hover-lift"
           >
             <div className="flex items-start justify-between">
               <h3 className="font-semibold text-lg group-hover:text-neutral-400 transition-colors">
@@ -60,7 +60,7 @@ export function Projects() {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400"
+                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover-shimmer"
                 >
                   {tech}
                 </span>
