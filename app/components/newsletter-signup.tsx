@@ -49,7 +49,7 @@ export function NewsletterSignup({
   return (
     <div className={`rounded-xl border border-slate-800 bg-slate-900/50 p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
-        <Mail className="w-5 h-5 text-indigo-400" />
+        <Mail className="w-5 h-5 text-neutral-400" />
         <h3 className="text-lg font-semibold">{title}</h3>
       </div>
       
@@ -72,12 +72,12 @@ export function NewsletterSignup({
               placeholder="you@example.com"
               required
               disabled={status === 'loading'}
-              className="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 disabled:opacity-50"
+              className="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400 disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700 disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-600 disabled:opacity-50"
             >
               {status === 'loading' ? (
                 <>
@@ -111,7 +111,7 @@ export function NewsletterEmbed({ className = '' }: { className?: string }) {
   return (
     <div className={`rounded-xl border border-slate-800 bg-slate-900/50 p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
-        <Mail className="w-5 h-5 text-indigo-400" />
+        <Mail className="w-5 h-5 text-neutral-400" />
         <h3 className="text-lg font-semibold">Stay updated</h3>
       </div>
       
@@ -123,7 +123,7 @@ export function NewsletterEmbed({ className = '' }: { className?: string }) {
         href="https://twitterscore.substack.com/subscribe"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+        className="inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-600"
       >
         Subscribe on Substack
         <svg

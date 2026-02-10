@@ -35,11 +35,11 @@ export function Skills() {
         {skills.map((skill) => (
           <div
             key={skill.title}
-            className="group p-6 rounded-xl bg-slate-900/30 border border-slate-800/50 hover:border-indigo-500/30 transition-all card-hover"
+            className="group p-6 rounded-xl bg-slate-900/30 border border-slate-800/50 hover:border-neutral-400/30 transition-all card-hover"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 rounded-lg bg-gradient-to-br from-indigo-500/20 to-cyan-500/20">
-                <skill.icon className="w-5 h-5 text-indigo-400" />
+              <div className="p-2 rounded-lg bg-gradient-to-br from-neutral-400/20 to-neutral-400/20">
+                <skill.icon className="w-5 h-5 text-neutral-400" />
               </div>
               <h3 className="font-semibold text-lg">{skill.title}</h3>
             </div>
