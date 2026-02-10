@@ -30,7 +30,7 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="transition-all hover:text-neutral-400 dark:hover:text-neutral-400 flex align-middle relative py-1 px-2 m-1"
+                className="transition-all text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white flex align-middle relative py-1 px-2 m-1"
               >
                 {name}
               </Link>
@@ -44,14 +44,14 @@ export function Navbar() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-neutral-500 dark:neutral-400 hover:text-neutral-400 dark:hover:text-neutral-400 transition-colors"
+                className="p-2 text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors"
                 aria-label={link.label}
               >
                 <link.icon className="w-4 h-4" />
               </a>
             ))}
             
-            <div className="w-px h-4 bg-neutral-700 mx-1"></div>
+            <div className="w-px h-4 bg-neutral-300 dark:bg-neutral-700 mx-1"></div>
             
             <ThemeToggle />
           </div>

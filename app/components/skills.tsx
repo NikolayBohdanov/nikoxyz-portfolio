@@ -30,27 +30,27 @@ const skills = [
 export function Skills() {
   return (
     <section id="skills" className="py-12">
-      <h2 className="text-2xl font-bold mb-8 text-neutral-900 dark:text-neutral-100">Expertise</h2>
+      <h2 className="section-title">Expertise</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {skills.map((skill) => (
           <div
             key={skill.title}
-            className="group p-6 rounded-xl bg-neutral-100 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-400/30 transition-all card-hover card-shimmer hover-lift"
+            className="skills-card card-hover"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800">
-                <skill.icon className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
+              <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800">
+                <skill.icon className="w-5 h-5 text-neutral-700 dark:text-neutral-400" />
               </div>
-              <h3 className="font-semibold text-lg text-neutral-900 dark:text-neutral-100">{skill.title}</h3>
+              <h3 className="skills-title">{skill.title}</h3>
             </div>
             
-            <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4">{skill.description}</p>
+            <p className="skills-description">{skill.description}</p>
             
             <div className="flex flex-wrap gap-2">
               {skill.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-1 text-xs rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover-shimmer"
+                  className="skills-tag"
                 >
                   {tag}
                 </span>
