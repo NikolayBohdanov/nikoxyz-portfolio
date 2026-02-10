@@ -47,13 +47,13 @@ export function NewsletterSignup({
   }
 
   return (
-    <div className={`rounded-xl border border-slate-800 bg-slate-900/50 p-6 ${className}`}>
+    <div className={`rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
         <Mail className="w-5 h-5 text-neutral-400" />
         <h3 className="text-lg font-semibold">{title}</h3>
       </div>
       
-      <p className="text-slate-400 text-sm mb-4">{description}</p>
+      <p className="text-neutral-500 dark:neutral-400 text-sm mb-4">{description}</p>
 
       {status === 'success' ? (
         <div className="flex items-center gap-2 p-4 rounded-lg bg-green-900/20 border border-green-800">
@@ -72,7 +72,7 @@ export function NewsletterSignup({
               placeholder="you@example.com"
               required
               disabled={status === 'loading'}
-              className="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400 disabled:opacity-50"
+              className="flex-1 rounded-lg border border-neutral-700 bg-neutral-950 px-4 py-2.5 text-sm text-white placeholder:text-neutral-600 dark:neutral-500 focus:border-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400 disabled:opacity-50"
             />
             <button
               type="submit"
@@ -97,7 +97,7 @@ export function NewsletterSignup({
             </div>
           )}
 
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-neutral-600 dark:neutral-500">
             No spam. Unsubscribe anytime.
           </p>
         </form>
@@ -109,13 +109,13 @@ export function NewsletterSignup({
 // Alternative: ConvertKit Embed Version
 export function NewsletterEmbed({ className = '' }: { className?: string }) {
   return (
-    <div className={`rounded-xl border border-slate-800 bg-slate-900/50 p-6 ${className}`}>
+    <div className={`rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
         <Mail className="w-5 h-5 text-neutral-400" />
         <h3 className="text-lg font-semibold">Stay updated</h3>
       </div>
       
-      <p className="text-slate-400 text-sm mb-4">
+      <p className="text-neutral-500 dark:neutral-400 text-sm mb-4">
         Subscribe to get notified about new posts and projects.
       </p>
 

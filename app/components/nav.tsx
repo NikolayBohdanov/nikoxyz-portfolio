@@ -44,14 +44,14 @@ export function Navbar() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-400 hover:text-neutral-400 dark:hover:text-neutral-400 transition-colors"
+                className="p-2 text-neutral-500 dark:neutral-400 hover:text-neutral-400 dark:hover:text-neutral-400 transition-colors"
                 aria-label={link.label}
               >
                 <link.icon className="w-4 h-4" />
               </a>
             ))}
             
-            <div className="w-px h-4 bg-slate-700 mx-1"></div>
+            <div className="w-px h-4 bg-neutral-700 mx-1"></div>
             
             <ThemeToggle />
           </div>

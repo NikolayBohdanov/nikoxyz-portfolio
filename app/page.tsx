@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <section className="relative">
       {/* Background glow */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-neutral-400/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-neutral-400/10 dark:bg-neutral-400/10 rounded-full blur-3xl pointer-events-none"></div>
       
       <div className="relative z-10">
         {/* Hero Section */}
@@ -18,71 +18,71 @@ export default function Page() {
           {/* Avatar with gradient glow */}
           <div className="inline-block mb-6">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-neutral-400 to-neutral-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-neutral-400 to-neutral-300 dark:from-neutral-400 dark:to-neutral-300 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
               <Image
                 src="/avatar.png"
                 alt="Nikolay - Crypto Researcher"
                 width={128}
                 height={128}
-                className="relative rounded-full border-2 border-slate-800"
+                className="relative rounded-full border-2 border-neutral-200 dark:border-neutral-800"
                 priority
               />
             </div>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-neutral-900 dark:text-neutral-100">
             Hi, I'm <span className="gradient-text">Nikolay</span>
           </h1>
           
-          <p className="text-xl text-slate-400 mb-4">
+          <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-4">
             Crypto Researcher & Product Manager
           </p>
           
-          <p className="text-slate-500 max-w-lg mx-auto">
+          <p className="text-neutral-600 dark:text-neutral-500 max-w-lg mx-auto">
             Specializing in tokenomics, DeFi protocols, and on-chain analytics.
             I help teams build sustainable crypto products.
           </p>
         </div>
 
         <div className="prose dark:prose-invert max-w-none">
-          <p className="mb-4 text-lg">
+          <p className="mb-4 text-lg text-neutral-800 dark:text-neutral-200">
             Crypto-native Product Manager and DeFi enthusiast with deep expertise in tokenized ecosystems, 
             on-chain analytics, and social-fi platforms. Currently leading product development at TwitterScore, 
             where I'm building the next generation of crypto research and due diligence tools that help 
             investors discover alpha through social data.
           </p>
           
-          <p className="mb-4">
+          <p className="mb-4 text-neutral-700 dark:text-neutral-300">
             Passionate about the intersection of AI, social graphs, and blockchain technology. 
             I believe everything will become tokenized, and I'm dedicated to creating products that 
             bridge the gap between complex on-chain data and actionable insights for both retail and 
             institutional users.
           </p>
           
-          <p className="mb-8">
+          <p className="mb-8 text-neutral-700 dark:text-neutral-300">
             When I'm not shipping features, you'll find me farming yields across DeFi protocols, 
             analyzing tokenomics, or exploring emerging L2 ecosystems.
           </p>
         </div>
 
         {/* Stats Strip */}
-        <section className="border-y border-slate-800/50 bg-slate-900/30 my-8 -mx-4 px-4 py-8">
+        <section className="border-y border-neutral-200 dark:border-neutral-800/50 bg-neutral-100 dark:bg-neutral-900/30 my-8 -mx-4 px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <p className="text-3xl font-bold text-neutral-300">50+</p>
-              <p className="text-slate-500 text-sm">Protocols</p>
+              <p className="text-3xl font-bold text-neutral-800 dark:text-neutral-200">50+</p>
+              <p className="text-neutral-600 dark:text-neutral-500 text-sm">Protocols</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-neutral-300">5+</p>
-              <p className="text-slate-500 text-sm">Years</p>
+              <p className="text-3xl font-bold text-neutral-800 dark:text-neutral-200">5+</p>
+              <p className="text-neutral-600 dark:text-neutral-500 text-sm">Years</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-neutral-300">100+</p>
-              <p className="text-slate-500 text-sm">Reports</p>
+              <p className="text-3xl font-bold text-neutral-800 dark:text-neutral-200">100+</p>
+              <p className="text-neutral-600 dark:text-neutral-500 text-sm">Reports</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-neutral-300">10+</p>
-              <p className="text-slate-500 text-sm">Projects</p>
+              <p className="text-3xl font-bold text-neutral-800 dark:text-neutral-200">10+</p>
+              <p className="text-neutral-600 dark:text-neutral-500 text-sm">Projects</p>
             </div>
           </div>
         </section>
