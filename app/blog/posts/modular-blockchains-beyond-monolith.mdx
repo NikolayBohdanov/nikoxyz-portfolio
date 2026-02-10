@@ -1,0 +1,103 @@
+---
+title: 'Modular Blockchains: Beyond the Monolith'
+publishedAt: '2025-01-28'
+summary: 'Why modular blockchain architecture is winning and what it means for the future of scalability, security, and sovereignty.'
+tags: ['Blockchain', 'Modular', 'Celestia', 'Ethereum', 'Scalability']
+---
+
+The blockchain industry is undergoing a fundamental architectural shift. After years of monolithic chains trying to do everything—consensus, data availability, and execution—we're witnessing the rise of **modular blockchains**.
+
+## The Monolithic Problem
+
+Traditional blockchains like Ethereum (pre-Danksharding) and Solana follow a monolithic design:
+
+- **Consensus**: Agreement on transaction order
+- **Data Availability**: Ensuring data is accessible
+- **Execution**: Running transactions and smart contracts
+- **Settlement**: Finalizing transactions
+
+All four functions happen on the same chain, creating inevitable trade-offs. Want more throughput? Sacrifice decentralization. Want better security? Accept higher costs.
+
+## The Modular Solution
+
+Modular blockchains separate these functions into specialized layers:
+
+### 1. Data Availability Layers
+**Celestia** and **EigenDA** focus solely on making data available. They don't execute transactions—they just ensure that block data is published and accessible.
+
+### 2. Execution Layers
+**Rollups** (Optimism, Arbitrum, Base) handle transaction execution off the main chain, then post compressed data to L1.
+
+### 3. Settlement Layers
+Ethereum is evolving into a settlement layer—a place where rollups anchor their security and finalize transactions.
+
+### 4. Consensus Layers
+Specialized layers like **Celestia** provide consensus as a service.
+
+## Why This Matters
+
+**Scalability Without Compromise**
+
+By separating concerns, each layer can optimize for its specific function:
+- Data availability layers can use advanced techniques like **data availability sampling (DAS)**
+- Execution layers can experiment with different virtual machines
+- Settlement layers can focus on security and decentralization
+
+**Sovereign Rollups**
+
+Perhaps the most exciting development is sovereign rollups—rollups that don't rely on an L1 for settlement. They use the data availability layer for ordering but handle their own settlement. This gives them:
+
+- **Upgradeability** without L1 governance
+- **Custom tokenomics** for their native token
+- **Fork choice independence**
+
+## Real-World Impact
+
+At TwitterScore, we've seen firsthand how modular architecture affects user experience:
+
+- **Lower fees**: Transactions on L2s cost pennies vs. dollars on L1
+- **Faster finality**: Sub-second confirmations vs. 12-minute blocks
+- **Better UX**: Abstracted complexity for end users
+
+## The Modular Stack
+
+Here's how I think about the modular stack:
+
+| Layer | Examples | Function |
+|-------|----------|----------|
+| Application | Uniswap, Aave | User interface |
+| Execution | Arbitrum, Optimism | Transaction processing |
+| Settlement | Ethereum | Finality & bridging |
+| Data Availability | Celestia, EigenDA | Data publication |
+| Consensus | Celestia, Ethereum | Agreement on ordering |
+
+## Challenges Ahead
+
+Modular architecture isn't without challenges:
+
+**Fragmented Liquidity**: Assets spread across multiple rollups
+**Bridge Risks**: Moving between layers introduces security assumptions
+**User Complexity**: More layers = more complexity to understand
+**Composability**: Cross-rollup interactions are harder than same-chain calls
+
+## My Take
+
+I believe modular blockchains represent the correct architectural evolution. The question isn't whether modularity wins—it's which specific combination of layers becomes dominant.
+
+Ethereum's rollup-centric roadmap combined with data sharding is compelling. But Celestia's sovereign rollups offer a genuinely different paradigm. And newer entrants like **Fuel** (execution) and **Avail** (data availability) add even more options.
+
+For builders, this creates both opportunity and complexity. The opportunity: build on the best execution environment for your use case. The complexity: more moving parts to understand and secure.
+
+## What's Next
+
+Watch for:
+1. **Native account abstraction** on rollups
+2. **Shared sequencing** solutions for cross-rollup composability
+3. **Modular DA** becoming commodity infrastructure
+4. **Sovereign rollups** gaining traction
+
+The monolithic vs. modular debate isn't about one being "better"—it's about different trade-offs for different use cases. And that's exactly what a mature ecosystem needs: choice.
+
+---
+
+*Building on a modular stack? I'd love to hear about your architecture decisions. Reach out on [Twitter](https://twitter.com/nikoxyz).*
