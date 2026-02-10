@@ -44,14 +44,6 @@
   --sh-string: #86efac;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --background: #0a0a0a;
-    --foreground: #fafafa;
-    --muted: #171717;
-    --muted-foreground: #a3a3a3;
-    --border: #262626;
-  }
 }
 
 html {
