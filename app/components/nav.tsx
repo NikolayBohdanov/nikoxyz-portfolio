@@ -30,7 +30,7 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="transition-all hover:text-indigo-500 dark:hover:text-indigo-400 flex align-middle relative py-1 px-2 m-1"
+                className="transition-all hover:text-neutral-400 dark:hover:text-neutral-400 flex align-middle relative py-1 px-2 m-1"
               >
                 {name}
               </Link>
@@ -44,7 +44,7 @@ export function Navbar() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+                className="p-2 text-slate-400 hover:text-neutral-400 dark:hover:text-neutral-400 transition-colors"
                 aria-label={link.label}
               >
                 <link.icon className="w-4 h-4" />

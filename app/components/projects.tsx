@@ -45,13 +45,13 @@ export function Projects() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-all hover:bg-neutral-50 dark:hover:bg-neutral-900/50"
+            className="group block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400/50 dark:hover:border-neutral-400/50 transition-all hover:bg-neutral-50 dark:hover:bg-neutral-900/50"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-semibold text-lg group-hover:text-indigo-500 transition-colors">
+              <h3 className="font-semibold text-lg group-hover:text-neutral-400 transition-colors">
                 {project.name}
               </h3>
-              <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-indigo-500 transition-colors" />
+              <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-neutral-400 transition-colors" />
             </div>
             <p className="mt-2 text-neutral-600 dark:text-neutral-400 text-sm">
               {project.description}

@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <section className="relative">
       {/* Background glow */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-neutral-400/10 rounded-full blur-3xl pointer-events-none"></div>
       
       <div className="relative z-10">
         {/* Hero Section */}
@@ -18,7 +18,7 @@ export default function Page() {
           {/* Avatar with gradient glow */}
           <div className="inline-block mb-6">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-neutral-400 to-neutral-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
               <Image
                 src="/avatar.png"
                 alt="Nikolay - Crypto Researcher"
@@ -69,19 +69,19 @@ export default function Page() {
         <section className="border-y border-slate-800/50 bg-slate-900/30 my-8 -mx-4 px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <p className="text-3xl font-bold text-cyan-400">50+</p>
+              <p className="text-3xl font-bold text-neutral-300">50+</p>
               <p className="text-slate-500 text-sm">Protocols</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-cyan-400">5+</p>
+              <p className="text-3xl font-bold text-neutral-300">5+</p>
               <p className="text-slate-500 text-sm">Years</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-cyan-400">100+</p>
+              <p className="text-3xl font-bold text-neutral-300">100+</p>
               <p className="text-slate-500 text-sm">Reports</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-cyan-400">10+</p>
+              <p className="text-3xl font-bold text-neutral-300">10+</p>
               <p className="text-slate-500 text-sm">Projects</p>
             </div>
           </div>
