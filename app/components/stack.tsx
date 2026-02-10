@@ -21,19 +21,19 @@ export function Stack() {
   return (
     <section id="stack" className="py-12">
       <h2 className="text-2xl font-bold mb-4">Tools & Stack</h2>
-      <p className="text-slate-400 mb-8">Technologies and platforms I work with daily</p>
+      <p className="text-neutral-500 dark:neutral-400 mb-8">Technologies and platforms I work with daily</p>
       
       <div className="space-y-8">
         {categories.map((category) => (
           <div key={category.name}>
-            <h3 className="text-sm font-medium text-slate-500 uppercase tracking-wider mb-3">
+            <h3 className="text-sm font-medium text-neutral-600 dark:neutral-500 uppercase tracking-wider mb-3">
               {category.name}
             </h3>
             <div className="flex flex-wrap gap-2">
               {category.tools.map((tool) => (
                 <span
                   key={tool}
-                  className="px-3 py-1.5 text-sm rounded-md bg-slate-900/50 border border-slate-800 text-slate-300 hover:border-neutral-400/30 hover:text-neutral-400 transition-colors cursor-default"
+                  className="px-3 py-1.5 text-sm rounded-md bg-neutral-900/50 border border-neutral-800 text-neutral-400 dark:neutral-300 hover:border-neutral-400/30 hover:text-neutral-400 transition-colors cursor-default"
                 >
                   {tool}
                 </span>

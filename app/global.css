@@ -6,37 +6,37 @@
 }
 
 :root {
-  /* Light Mode - Improved Contrast */
+  /* Light Mode - High Contrast */
   --background: #ffffff;
-  --foreground: #0a0a0f;
-  --muted: #f8f9fa;
-  --muted-foreground: #52525b;
-  --border: #e4e4e7;
-  --accent: #52525b;
-  --accent-foreground: #fafafa;
-  --accent-metallic: #71717a;
+  --foreground: #0f0f0f;
+  --muted: #f5f5f5;
+  --muted-foreground: #404040;
+  --border: #d4d4d4;
+  --accent: #171717;
+  --accent-foreground: #ffffff;
+  --accent-metallic: #525252;
   
   /* Syntax Highlighting Light */
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
+  --sh-class: #1e40af;
+  --sh-identifier: #1f2937;
+  --sh-sign: #6b7280;
+  --sh-string: #047857;
+  --sh-keyword: #dc2626;
+  --sh-comment: #6b7280;
+  --sh-jsxliterals: #4f46e5;
+  --sh-property: #ea580c;
+  --sh-entity: #ea580c;
   
-  /* Custom Properties */
-  --color-bg-primary: #0a0a0f;
-  --color-bg-elevated: #13131f;
-  --color-bg-hover: #1a1a2e;
-  --color-primary: #71717a;
-  --color-primary-hover: #52525b;
-  --color-accent: #a1a1aa;
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
+  /* Custom Properties - Light */
+  --color-bg-primary: #ffffff;
+  --color-bg-elevated: #fafafa;
+  --color-bg-hover: #f5f5f5;
+  --color-primary: #171717;
+  --color-primary-hover: #000000;
+  --color-accent: #404040;
+  --color-text-primary: #0f0f0f;
+  --color-text-secondary: #525252;
+  --color-text-muted: #737373;
 }
 
 .dark {
@@ -55,6 +55,17 @@
   --sh-identifier: #e4e4e7;
   --sh-keyword: #d4d4d8;
   --sh-string: #94a3b8;
+  
+  /* Custom Properties - Dark */
+  --color-bg-primary: #09090b;
+  --color-bg-elevated: #18181b;
+  --color-bg-hover: #27272a;
+  --color-primary: #d4d4d8;
+  --color-primary-hover: #e4e4e7;
+  --color-accent: #a1a1aa;
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #e4e4e7;
+  --color-text-muted: #a1a1aa;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,25 +88,36 @@ body {
   color: var(--foreground);
 }
 
-/* Gradient Text Utility - Metallic Silver */
+/* Gradient Text Utility */
 .gradient-text {
+  background: linear-gradient(135deg, #525252 0%, #262626 50%, #0f0f0f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text {
   background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 50%, #71717a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Metallic Glow Effects */
+/* Glow Effects */
 .glow-metallic {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glow-metallic {
   box-shadow: 0 0 40px rgba(212, 212, 216, 0.15);
 }
 
 .glow-silver {
-  box-shadow: 0 0 50px rgba(228, 228, 231, 0.12);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
 }
 
-.glow-subtle {
-  box-shadow: 0 0 30px rgba(161, 161, 170, 0.08);
+.dark .glow-silver {
+  box-shadow: 0 0 50px rgba(228, 228, 231, 0.12);
 }
 
 /* Prose Styles */
@@ -126,15 +148,15 @@ body {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-800 py-2 px-3 text-sm;
+  @apply bg-neutral-100 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-800 py-2 px-3 text-sm;
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800;
 }
 
 .prose pre code {
-  @apply p-0;
+  @apply p-0 bg-transparent;
   border: initial;
   line-height: 1.5;
 }
@@ -148,35 +170,35 @@ body {
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-4 text-neutral-700 dark:text-neutral-300;
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-2xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  @apply text-lg font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-semibold text-neutral-900 dark:text-neutral-100;
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 text-neutral-700 dark:text-neutral-300;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 text-neutral-700 dark:text-neutral-300;
 }
 
 .prose > :first-child {
@@ -218,25 +240,29 @@ table {
 
 .card-hover:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.dark .card-hover:hover {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Button Styles - Metallic Theme */
+/* Button Styles - High Contrast */
 .btn-primary {
   @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-white transition-all;
-  background: linear-gradient(135deg, #52525b 0%, #3f3f46 100%);
+  background: linear-gradient(135deg, #171717 0%, #000000 100%);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #71717a 0%, #52525b 100%);
+  background: linear-gradient(135deg, #404040 0%, #171717 100%);
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-md border border-neutral-600 bg-transparent px-4 py-2 text-sm font-medium text-neutral-300 transition-all;
+  @apply inline-flex items-center justify-center rounded-md border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-700 transition-all;
 }
 
 .btn-secondary:hover {
-  @apply bg-neutral-800 text-white border-neutral-500;
+  @apply bg-neutral-50 text-neutral-900 border-neutral-400;
 }
 
 /* Dark mode button overrides */
@@ -250,23 +276,26 @@ table {
 }
 
 .dark .btn-secondary {
-  @apply border-neutral-600 text-neutral-400;
+  @apply border-neutral-700 bg-transparent text-neutral-300;
 }
 
 .dark .btn-secondary:hover {
-  @apply bg-neutral-800 text-neutral-200 border-neutral-500;
+  @apply bg-neutral-800 text-neutral-100 border-neutral-600;
 }
 
-/* Metallic Accent Utilities */
+/* Metallic Accent Utilities - Light Mode */
 .text-metallic {
-  background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 50%, #71717a 100%);
+  background: linear-gradient(135deg, #404040 0%, #171717 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.border-metallic {
-  border-image: linear-gradient(135deg, #e4e4e7, #a1a1aa, #71717a) 1;
+.dark .text-metallic {
+  background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 50%, #71717a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Smooth transitions for theme changes */
@@ -288,6 +317,15 @@ table {
 
 @keyframes metallic-glow {
   0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.dark @keyframes metallic-glow {
+  0%, 100% {
     box-shadow: 0 0 20px rgba(212, 212, 216, 0.2);
   }
   50% {
@@ -299,14 +337,36 @@ table {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
+    rgba(0, 0, 0, 0.05) 50%,
     transparent 100%
   );
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
 
+.dark .shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+}
+
 .shimmer-metallic {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.08) 25%,
+    rgba(0, 0, 0, 0.12) 50%,
+    rgba(0, 0, 0, 0.08) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+.dark .shimmer-metallic {
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -315,8 +375,6 @@ table {
     rgba(228, 228, 231, 0.15) 75%,
     transparent 100%
   );
-  background-size: 200% 100%;
-  animation: shimmer 2.5s ease-in-out infinite;
 }
 
 .hover-shimmer {
@@ -334,10 +392,19 @@ table {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.15),
+    rgba(0, 0, 0, 0.08),
     transparent
   );
   transition: left 0.5s;
+}
+
+.dark .hover-shimmer::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
 }
 
 .hover-shimmer:hover::before {
@@ -363,12 +430,21 @@ table {
   background: linear-gradient(
     45deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.03) 50%,
+    rgba(0, 0, 0, 0.02) 50%,
     transparent 70%
   );
   transform: rotate(30deg);
   transition: all 0.6s;
   opacity: 0;
+}
+
+.dark .card-shimmer::after {
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 70%
+  );
 }
 
 .card-shimmer:hover::after {
@@ -384,7 +460,7 @@ table {
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
 .dark .hover-lift:hover {
