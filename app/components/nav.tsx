@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Github, Twitter, Linkedin } from 'lucide-react'
+import { ThemeToggle } from './theme-toggle'
 
 const navItems = {
   '/': {
@@ -49,6 +50,10 @@ export function Navbar() {
                 <link.icon className="w-4 h-4" />
               </a>
             ))}
+            
+            <div className="w-px h-4 bg-slate-700 mx-1"></div>
+            
+            <ThemeToggle />
           </div>
         </nav>
       </div>
