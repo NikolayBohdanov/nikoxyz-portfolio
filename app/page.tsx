@@ -3,6 +3,7 @@ import WorkExperience from './components/work'
 import { Skills } from './components/skills'
 import { Stack } from './components/stack'
 import { Contact } from './components/contact'
+import { Projects } from './components/projects'
 
 export default function Page() {
   return (
@@ -91,6 +92,10 @@ export default function Page() {
 
         <div className="my-8">
           <WorkExperience />
+        </div>
+        
+        <div className="my-8">
+          <Projects />
         </div>
         
         <Contact />
