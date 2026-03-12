@@ -47,7 +47,7 @@ export function NewsletterSignup({
   }
 
   return (
-    <div className={`rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 p-6 ${className}`}>
+    <div className={`rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
         <Mail className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
         <h3 className="text-lg font-semibold text-black dark:text-white">{title}</h3>
@@ -109,7 +109,7 @@ export function NewsletterSignup({
 // Alternative: ConvertKit Embed Version
 export function NewsletterEmbed({ className = '' }: { className?: string }) {
   return (
-    <div className={`rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 p-6 ${className}`}>
+    <div className={`rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
         <Mail className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
         <h3 className="text-lg font-semibold text-black dark:text-white">Stay updated</h3>

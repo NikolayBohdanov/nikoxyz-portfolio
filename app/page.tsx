@@ -51,24 +51,24 @@ export default function Page() {
           </p>
         </div>
 
-        {/* Stats Strip */}
-        <section className="stats-section my-8 -mx-4 px-4 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <p className="stat-number">200+</p>
-              <p className="stat-label">Projects Analyzed</p>
+        {/* Stats Cards */}
+        <section className="my-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6">
+              <p className="text-3xl font-bold text-gray-900 dark:text-white">200+</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Projects Analyzed</p>
             </div>
-            <div className="text-center">
-              <p className="stat-number">35K+</p>
-              <p className="stat-label">Accounts Monitored</p>
+            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6">
+              <p className="text-3xl font-bold text-gray-900 dark:text-white">35K+</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Accounts Monitored</p>
             </div>
-            <div className="text-center">
-              <p className="stat-number">250+</p>
-              <p className="stat-label">API Clients</p>
+            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6">
+              <p className="text-3xl font-bold text-gray-900 dark:text-white">250+</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">API Clients</p>
             </div>
-            <div className="text-center">
-              <p className="stat-number">4+</p>
-              <p className="stat-label">Years Experience</p>
+            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6">
+              <p className="text-3xl font-bold text-gray-900 dark:text-white">4+</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Experience</p>
             </div>
           </div>
         </section>
