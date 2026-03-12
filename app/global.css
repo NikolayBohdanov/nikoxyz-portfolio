@@ -247,6 +247,27 @@ body {
   color: #737373 !important;
 }
 
+/* Dark Mode Overrides (to beat !important) */
+.dark .text-gray-700 {
+  color: #f5f5f5 !important;
+}
+
+.dark .text-gray-800 {
+  color: #f5f5f5 !important;
+}
+
+.dark .text-gray-900 {
+  color: #ffffff !important;
+}
+
+.dark .text-gray-600 {
+  color: #e5e5e5 !important;
+}
+
+.dark .text-gray-500 {
+  color: #d4d4d4 !important;
+}
+
 /* Scrollbar hide */
 pre::-webkit-scrollbar {
   display: none;
