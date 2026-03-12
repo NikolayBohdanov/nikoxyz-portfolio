@@ -38,14 +38,14 @@ export default function WorkExperience() {
       <h2 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">Professional Experience</h2>
       <div className="space-y-8">
         {experiences.map((exp) => (
-          <div key={exp.company} className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
+          <div key={exp.company} className="border-l-2 border-blue-200 dark:border-blue-900 pl-6">
             <div className="mb-3">
-              <div className="flex items-baseline justify-between mb-1">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{exp.company}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">{exp.period}</p>
+              <div className="flex items-baseline justify-between mb-2">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{exp.company}</h3>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{exp.period}</p>
               </div>
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-200">{exp.role}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">{exp.location}</p>
+              <p className="text-base font-semibold text-gray-700 dark:text-gray-300 mb-1">{exp.role}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-500">{exp.location}</p>
             </div>
             <ul className="mt-3 space-y-2">
               {exp.details.map((detail, idx) => (
