@@ -33,7 +33,7 @@ export function Stack() {
               {category.tools.map((tool) => (
                 <span
                   key={tool}
-                  className="px-3 py-1.5 text-sm rounded-md bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors cursor-default"
+                  className="px-3 py-1.5 text-sm rounded-md bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-neutral-400 dark:hover:border-neutral-600 hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-0.5 hover:shadow-md transition-all cursor-default"
                 >
                   {tool}
                 </span>
