@@ -1,4 +1,4 @@
-import { Mail, ArrowRight } from 'lucide-react'
+import { Mail, ArrowRight, Phone, MapPin } from 'lucide-react'
 
 export function Contact() {
   return (
@@ -9,13 +9,32 @@ export function Contact() {
             Let's Build Something <span className="text-neutral-500 dark:text-neutral-300">Together</span>
           </h2>
           
-          <p className="text-neutral-600 dark:text-neutral-400 text-lg mb-8">
-            Open to research collaborations, advisory roles, and product consulting opportunities.
+          <p className="text-neutral-600 dark:text-neutral-400 text-lg mb-6">
+            Open to research collaborations, advisory roles, and product consulting opportunities in Web3.
           </p>
+          
+          <div className="space-y-3 mb-8">
+            <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
+              <Mail className="w-4 h-4 text-neutral-500" />
+              <a href="mailto:bohdanovmykola@gmail.com" className="hover:text-black dark:hover:text-white transition-colors">
+                bohdanovmykola@gmail.com
+              </a>
+            </div>
+            <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
+              <Phone className="w-4 h-4 text-neutral-500" />
+              <a href="tel:+380950021268" className="hover:text-black dark:hover:text-white transition-colors">
+                +380 95 002 12 68
+              </a>
+            </div>
+            <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
+              <MapPin className="w-4 h-4 text-neutral-500" />
+              <span>Odesa, Ukraine</span>
+            </div>
+          </div>
           
           <div className="flex flex-wrap gap-4">
             <a
-              href="mailto:nikolay@twitterscore.io"
+              href="mailto:bohdanovmykola@gmail.com"
               className="btn-primary"
             >
               <Mail className="w-4 h-4" />
@@ -23,10 +42,12 @@ export function Contact() {
             </a>
             
             <a
-              href="/resume.pdf"
+              href="https://linkedin.com/in/nikolaybohdanov"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-secondary"
             >
-              Download Resume
+              LinkedIn Profile
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

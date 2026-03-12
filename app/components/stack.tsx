@@ -1,19 +1,19 @@
 const categories = [
   {
-    name: 'Analytics & Research',
-    tools: ['Dune Analytics', 'Nansen', 'DeFiLlama', 'Token Terminal', 'Messari'],
+    name: 'Blockchain Analytics',
+    tools: ['Dune Analytics', 'Nansen', 'Arkham', 'DeFiLlama', 'DexScreener', 'DeBank'],
   },
   {
-    name: 'Development',
-    tools: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Python'],
+    name: 'Web3 Research Tools',
+    tools: ['CryptoRank', 'Dropstab', 'RootData', 'TwitterScore', 'Discover', 'Blockchain Explorers'],
   },
   {
-    name: 'Web3 Tools',
-    tools: ['Ethers.js', 'Viem', 'Hardhat', 'IPFS', 'The Graph', 'WalletConnect'],
+    name: 'Data & Development',
+    tools: ['Python', 'SQL', 'Excel', 'Google Sheets', 'BI Tools', 'Git'],
   },
   {
-    name: 'Productivity',
-    tools: ['Notion', 'Figma', 'Linear', 'Discord', 'Telegram'],
+    name: 'AI & Productivity',
+    tools: ['OpenClaw', 'Tavily', 'Perplexity', 'GPT', 'Notion', 'Trello'],
   },
 ]
 
@@ -21,7 +21,7 @@ export function Stack() {
   return (
     <section id="stack" className="py-12">
       <h2 className="section-title">Tools & Stack</h2>
-      <p className="text-neutral-600 dark:text-neutral-400 mb-8">Technologies and platforms I work with daily</p>
+      <p className="text-neutral-600 dark:text-neutral-400 mb-8">Technologies and platforms I use for blockchain research, data analysis, and product development</p>
       
       <div className="space-y-8">
         {categories.map((category) => (
