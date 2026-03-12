@@ -30,23 +30,23 @@ export default function Page() {
             Hi, I'm <span className="gradient-text">Nikolay Bohdanov</span>
           </h1>
           
-          <p className="text-xl text-gray-700 dark:text-gray-200 mb-4">
+          <p className="text-xl text-gray-700 dark:text-white mb-4">
             Web3 Data Analyst | Product Manager | Business Development
           </p>
           
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-gray-600 dark:text-gray-100 max-w-2xl mx-auto mb-8">
             4+ years of blockchain market analysis and 3+ years leading product growth at TwitterScore.io. 
             Specialized in tokenomics evaluation, on-chain analytics, and data-driven product strategy.
           </p>
         </div>
 
         <div className="max-w-none px-4 md:px-0 prose mb-8">
-          <p className="mb-4 text-base text-gray-700 dark:text-gray-200">
+          <p className="mb-4 text-base text-gray-700 dark:text-gray-100">
             Product Manager and Business Development Lead at TwitterScore.io, where I scaled the platform to 35K+ accounts 
             under daily monitoring and launched API products serving 250+ clients with 80%+ retention.
           </p>
           
-          <p className="mb-4 text-base text-gray-700 dark:text-gray-200">
+          <p className="mb-4 text-base text-gray-700 dark:text-gray-100">
             As an Investment Research & Risk Analyst, I've evaluated 200+ Web3 projects across tokenomics, 
             ICO structures, and smart contract risk using Nansen, Dune, Arkham, SQL, and Python for data-driven insights.
           </p>
