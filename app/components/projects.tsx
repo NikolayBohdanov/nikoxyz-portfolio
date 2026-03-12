@@ -53,14 +53,14 @@ export function Projects() {
               </h3>
               <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors" />
             </div>
-            <p className="mt-2 text-neutral-600 dark:text-neutral-400 text-sm">
+            <p className="mt-2 text-neutral-600 dark:text-neutral-300 text-sm">
               {project.description}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700"
+                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700"
                 >
                   {tech}
                 </span>

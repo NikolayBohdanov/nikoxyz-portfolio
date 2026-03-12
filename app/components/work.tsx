@@ -50,7 +50,7 @@ export default function WorkExperience() {
             <ul className="mt-3 space-y-2">
               {exp.details.map((detail, idx) => (
                 <li key={idx} className="text-sm text-gray-700 dark:text-gray-200 flex">
-                  <span className="mr-2 text-gray-400 dark:text-gray-400">•</span>
+                  <span className="mr-2 text-gray-400 dark:text-gray-500">•</span>
                   <span>{detail}</span>
                 </li>
               ))}

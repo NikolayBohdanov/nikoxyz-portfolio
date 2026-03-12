@@ -21,12 +21,12 @@ export function Stack() {
   return (
     <section id="stack" className="py-12">
       <h2 className="section-title">Tools & Stack</h2>
-      <p className="text-neutral-600 dark:text-neutral-400 mb-8">Technologies and platforms I use for blockchain research, data analysis, and product development</p>
+      <p className="text-neutral-600 dark:text-neutral-300 mb-8">Technologies and platforms I use for blockchain research, data analysis, and product development</p>
       
       <div className="space-y-8">
         {categories.map((category) => (
           <div key={category.name}>
-            <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-500 uppercase tracking-wider mb-3">
+            <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-3">
               {category.name}
             </h3>
             <div className="flex flex-wrap gap-2">

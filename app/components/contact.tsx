@@ -9,7 +9,7 @@ export function Contact() {
             Let's Build Something <span className="text-neutral-500 dark:text-neutral-300">Together</span>
           </h2>
           
-          <p className="text-neutral-600 dark:text-neutral-400 text-lg mb-6">
+          <p className="text-neutral-600 dark:text-neutral-300 text-lg mb-6">
             Open to research collaborations, advisory roles, and product consulting opportunities in Web3.
           </p>
           

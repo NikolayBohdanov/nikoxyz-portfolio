@@ -53,7 +53,7 @@ export function NewsletterSignup({
         <h3 className="text-lg font-semibold text-black dark:text-white">{title}</h3>
       </div>
       
-      <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4">{description}</p>
+      <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-4">{description}</p>
 
       {status === 'success' ? (
         <div className="flex items-center gap-2 p-4 rounded-lg bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
@@ -97,7 +97,7 @@ export function NewsletterSignup({
             </div>
           )}
 
-          <p className="text-xs text-neutral-500 dark:text-neutral-500">
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">
             No spam. Unsubscribe anytime.
           </p>
         </form>
@@ -115,7 +115,7 @@ export function NewsletterEmbed({ className = '' }: { className?: string }) {
         <h3 className="text-lg font-semibold text-black dark:text-white">Stay updated</h3>
       </div>
       
-      <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
+      <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-4">
         Subscribe to get notified about new posts and projects.
       </p>
 

@@ -70,7 +70,7 @@ body {
 }
 
 .dark .stat-label {
-  color: #a3a3a3;
+  color: #d4d4d8;
 }
 
 /* Skills Cards */
@@ -112,7 +112,7 @@ body {
 }
 
 .dark .skills-description {
-  color: #a3a3a3;
+  color: #d4d4d8;
 }
 
 .skills-tag {
@@ -126,8 +126,8 @@ body {
 }
 
 .dark .skills-tag {
-  border-color: #262626;
-  color: #a3a3a3;
+  border-color: #404040;
+  color: #d4d4d8;
   background-color: #262626;
 }
 
