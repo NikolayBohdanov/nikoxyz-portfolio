@@ -38,7 +38,7 @@ export default function WorkExperience() {
       <h2 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">Professional Experience</h2>
       <div className="space-y-8">
         {experiences.map((exp) => (
-          <div key={exp.company} className="border-l-2 border-blue-200 dark:border-blue-900 pl-6">
+          <div key={exp.company} className="border-l-2 border-neutral-300 dark:border-neutral-700 pl-6">
             <div className="mb-3">
               <div className="flex items-baseline justify-between mb-2">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">{exp.company}</h3>
