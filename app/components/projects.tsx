@@ -45,22 +45,22 @@ export function Projects() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 card-hover"
+            className="group block p-4 rounded-lg border-border hover:border-ring transition-all bg-card hover:bg-muted card-hover"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-semibold text-lg text-black dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors">
+              <h3 className="font-semibold text-lg text-card-foreground group-hover:text-muted-foreground transition-colors">
                 {project.name}
               </h3>
-              <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors" />
+              <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
             </div>
-            <p className="mt-2 text-neutral-600 dark:text-neutral-300 text-sm">
+            <p className="mt-2 text-muted-foreground text-sm">
               {project.description}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 hover:-translate-y-0.5 hover:shadow-md transition-all cursor-pointer"
+                  className="px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground border-border hover:bg-card hover:border-ring hover:-translate-y-0.5 hover:shadow-md transition-all cursor-pointer"
                 >
                   {tech}
                 </span>

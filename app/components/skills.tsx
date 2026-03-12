@@ -38,8 +38,8 @@ export function Skills() {
             className="skills-card card-hover"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800">
-                <skill.icon className="w-5 h-5 text-neutral-700 dark:text-neutral-400" />
+              <div className="p-2 rounded-lg bg-muted">
+                <skill.icon className="w-5 h-5 text-muted-foreground" />
               </div>
               <h3 className="skills-title">{skill.title}</h3>
             </div>

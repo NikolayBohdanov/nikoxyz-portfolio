@@ -20,7 +20,7 @@ export default function Page() {
                 alt="Nikolay Bohdanov - Web3 Research & Product"
                 width={128}
                 height={128}
-                className="relative rounded-full border-2 border-gray-200 dark:border-gray-800"
+                className="relative rounded-full border-2 border-border"
                 priority
               />
             </div>
@@ -30,22 +30,22 @@ export default function Page() {
             Hi, I'm <span className="gradient-text">Nikolay Bohdanov</span>
           </h1>
           
-          <p className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-4">
+          <p className="text-xl font-bold text-foreground mb-4">
             Web3 Data Analyst | Product Manager | Business Development
           </p>
           
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
             4+ years of blockchain market analysis and 3+ years leading product growth at TwitterScore.io.
           </p>
         </div>
 
         <div className="max-w-none px-4 md:px-0 prose mb-8">
-          <p className="mb-4 text-base text-gray-700 dark:text-gray-100">
+          <p className="mb-4 text-base text-foreground">
             Product Manager and Business Development Lead at TwitterScore.io, where I scaled the platform to 35K+ accounts 
             under daily monitoring and launched API products serving 250+ clients with 80%+ retention.
           </p>
           
-          <p className="mb-4 text-base text-gray-700 dark:text-gray-100">
+          <p className="mb-4 text-base text-foreground">
             As an Investment Research & Risk Analyst, I've evaluated 200+ Web3 projects across tokenomics, 
             ICO structures, and smart contract risk using Nansen, Dune, Arkham, SQL, and Python for data-driven insights.
           </p>
@@ -54,21 +54,21 @@ export default function Page() {
         {/* Stats Cards */}
         <section className="my-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6">
-              <p className="text-3xl font-bold text-gray-900 dark:text-white">200+</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Projects Analyzed</p>
+            <div className="rounded-lg border-border bg-card p-6">
+              <p className="text-3xl font-bold text-card-foreground">200+</p>
+              <p className="text-sm text-muted-foreground mt-1">Projects Analyzed</p>
             </div>
-            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6">
-              <p className="text-3xl font-bold text-gray-900 dark:text-white">35K+</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Accounts Monitored</p>
+            <div className="rounded-lg border-border bg-card p-6">
+              <p className="text-3xl font-bold text-card-foreground">35K+</p>
+              <p className="text-sm text-muted-foreground mt-1">Accounts Monitored</p>
             </div>
-            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6">
-              <p className="text-3xl font-bold text-gray-900 dark:text-white">250+</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">API Clients</p>
+            <div className="rounded-lg border-border bg-card p-6">
+              <p className="text-3xl font-bold text-card-foreground">250+</p>
+              <p className="text-sm text-muted-foreground mt-1">API Clients</p>
             </div>
-            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6">
-              <p className="text-3xl font-bold text-gray-900 dark:text-white">4+</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Experience</p>
+            <div className="rounded-lg border-border bg-card p-6">
+              <p className="text-3xl font-bold text-card-foreground">4+</p>
+              <p className="text-sm text-muted-foreground mt-1">Years Experience</p>
             </div>
           </div>
         </section>

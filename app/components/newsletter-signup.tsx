@@ -47,13 +47,13 @@ export function NewsletterSignup({
   }
 
   return (
-    <div className={`rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6 ${className}`}>
+    <div className={`rounded-xl border-border bg-card p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
-        <Mail className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
-        <h3 className="text-lg font-semibold text-black dark:text-white">{title}</h3>
+        <Mail className="w-5 h-5 text-muted-foreground" />
+        <h3 className="text-lg font-semibold text-card-foreground">{title}</h3>
       </div>
       
-      <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-4">{description}</p>
+      <p className="text-muted-foreground text-sm mb-4">{description}</p>
 
       {status === 'success' ? (
         <div className="flex items-center gap-2 p-4 rounded-lg bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
@@ -72,7 +72,7 @@ export function NewsletterSignup({
               placeholder="you@example.com"
               required
               disabled={status === 'loading'}
-              className="flex-1 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-4 py-2.5 text-sm text-black dark:text-white placeholder:text-neutral-400 focus:border-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400 disabled:opacity-50"
+              className="flex-1 rounded-lg border-input bg-card px-4 py-2.5 text-sm text-card-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring disabled:opacity-50"
             />
             <button
               type="submit"
@@ -97,7 +97,7 @@ export function NewsletterSignup({
             </div>
           )}
 
-          <p className="text-xs text-neutral-500 dark:text-neutral-400">
+          <p className="text-xs text-muted-foreground">
             No spam. Unsubscribe anytime.
           </p>
         </form>
@@ -109,13 +109,13 @@ export function NewsletterSignup({
 // Alternative: ConvertKit Embed Version
 export function NewsletterEmbed({ className = '' }: { className?: string }) {
   return (
-    <div className={`rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6 ${className}`}>
+    <div className={`rounded-xl border-border bg-card p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
-        <Mail className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
-        <h3 className="text-lg font-semibold text-black dark:text-white">Stay updated</h3>
+        <Mail className="w-5 h-5 text-muted-foreground" />
+        <h3 className="text-lg font-semibold text-card-foreground">Stay updated</h3>
       </div>
       
-      <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-4">
+      <p className="text-muted-foreground text-sm mb-4">
         Subscribe to get notified about new posts and projects.
       </p>
 

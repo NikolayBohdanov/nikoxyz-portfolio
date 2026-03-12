@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer className="mb-16">
-      <div className="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+      <div className="mt-16 pt-8 border-t border-border">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <div className="flex items-center">
@@ -21,13 +21,13 @@ export default function Footer() {
           
           {/* Quick Links */}
           <div className="flex gap-6 text-sm">
-            <a href="/privacy" className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
+            <a href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
               Privacy
             </a>
-            <a href="/resume.pdf" className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
+            <a href="/resume.pdf" className="text-muted-foreground hover:text-foreground transition-colors">
               Resume
             </a>
-            <a href="mailto:nikolay@twitterscore.io" className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
+            <a href="mailto:nikolay@twitterscore.io" className="text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </a>
           </div>
@@ -40,7 +40,7 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-all"
+                className="p-2 rounded-lg border-border bg-card text-muted-foreground hover:text-foreground hover:border-ring transition-all"
                 aria-label={link.label}
               >
                 <link.icon className="w-4 h-4" />
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
         
-        <p className="mt-8 text-center text-sm text-neutral-500 dark:text-neutral-500">
+        <p className="mt-8 text-center text-sm text-muted-foreground">
           © {currentYear} Nikolay Bohdanov. All rights reserved.
         </p>
       </div>
