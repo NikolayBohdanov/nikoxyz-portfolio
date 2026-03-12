@@ -30,13 +30,12 @@ export default function Page() {
             Hi, I'm <span className="gradient-text">Nikolay Bohdanov</span>
           </h1>
           
-          <p className="text-xl text-gray-700 dark:text-white mb-4">
+          <p className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-4">
             Web3 Data Analyst | Product Manager | Business Development
           </p>
           
-          <p className="text-gray-600 dark:text-gray-100 max-w-2xl mx-auto mb-8">
-            4+ years of blockchain market analysis and 3+ years leading product growth at TwitterScore.io. 
-            Specialized in tokenomics evaluation, on-chain analytics, and data-driven product strategy.
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+            4+ years of blockchain market analysis and 3+ years leading product growth at TwitterScore.io.
           </p>
         </div>
 
