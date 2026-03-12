@@ -1,36 +1,36 @@
-import { Search, Coins, Layout, Zap } from 'lucide-react'
+import { Search, BarChart3, Boxes, Users } from 'lucide-react'
 
 const skills = [
   {
-    title: 'Crypto Research',
+    title: 'Blockchain & Investment Research',
     icon: Search,
-    description: 'Deep-dive analysis of emerging protocols, tokenomics, and market trends',
-    tags: ['Fundamental Analysis', 'On-chain Metrics', 'Protocol Research'],
+    description: 'Web3 market research, tokenomics analysis, ICO/IDO evaluation, DeFi protocol analysis',
+    tags: ['Token Valuation', 'Smart Contract Risk', 'Layer 2 Analysis', 'On-chain Analytics'],
   },
   {
-    title: 'Tokenomics Design',
-    icon: Coins,
-    description: 'Designing sustainable token economies with proper incentive alignment',
-    tags: ['Vesting Schedules', 'Utility Design', 'Distribution Models'],
+    title: 'Data & Analytics',
+    icon: BarChart3,
+    description: 'Python, data analysis, social graph analysis, blockchain analytics, BI tools',
+    tags: ['Dune', 'Nansen', 'Arkham', 'Python', 'SQL', 'Excel'],
   },
   {
-    title: 'Product Management',
-    icon: Layout,
-    description: 'Leading cross-functional teams from concept to launch',
-    tags: ['Roadmapping', 'User Research', 'Agile/Scrum'],
+    title: 'Product & Business Development',
+    icon: Boxes,
+    description: 'Product management, API strategy, B2B SaaS, subscription models, growth strategy',
+    tags: ['API Design', 'B2B SaaS', 'Strategic Partnerships', 'Market Analysis'],
   },
   {
-    title: 'DeFi Strategy',
-    icon: Zap,
-    description: 'Building and optimizing decentralized financial products',
-    tags: ['Yield Strategies', 'Risk Management', 'Smart Contracts'],
+    title: 'Web3 Tools & Platforms',
+    icon: Users,
+    description: 'CryptoRank, Dropstab, RootData, TwitterScore, DexScreener, DeFiLlama',
+    tags: ['BlockchainExplorers', 'DexScreener', 'DeBank', 'OpenClaw', 'Tavily'],
   },
 ]
 
 export function Skills() {
   return (
     <section id="skills" className="py-12">
-      <h2 className="section-title">Expertise</h2>
+      <h2 className="section-title">Core Skills</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {skills.map((skill) => (
           <div

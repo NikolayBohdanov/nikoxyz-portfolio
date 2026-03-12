@@ -1,45 +1,60 @@
 export default function WorkExperience() {
   const experiences = [
     {
-      company: 'TwitterScore',
-      role: 'Product Development & Product Manager',
-      period: '2024 — Present',
-      details: 'Leading product strategy and execution for a crypto research platform that analyzes social sentiment and on-chain data. Shipped key features including wallet tracking, influencer scoring, and AI-powered market intelligence. Grew user base by 300% and established partnerships with major DeFi protocols.',
+      company: 'TwitterScore.io',
+      role: 'Product Manager & Business Development Lead',
+      period: '2023 — Present',
+      location: 'Remote',
+      details: [
+        'Drove 40% year-over-year growth in active users',
+        'Expanded indexed database by 80%, scaling to 35,000+ monitored crypto accounts',
+        'Launched API and subscription products serving 250+ clients with 80%+ retention',
+        'Secured strategic partnerships across Web3 analytics, AI, and SocialFi ecosystems (CryptoRank, RootData, ChainGPT)',
+        'Led cross-functional product development across 3+ time zones',
+        'Managed end-to-end lifecycle of 5+ major product releases',
+        'Designed API specifications and technical documentation',
+        'Implemented social graph analytics to improve scoring model accuracy',
+      ],
     },
     {
-      company: 'DeFi Pulse',
-      role: 'Senior Product Manager',
-      period: '2022 — 2024',
-      details: 'Owned product roadmap for DeFi analytics dashboard serving 500K+ monthly users. Launched portfolio tracking, yield aggregator comparisons, and risk assessment tools. Collaborated with Ethereum, Arbitrum, and Optimism ecosystems to integrate real-time TVL and APY data.',
-    },
-    {
-      company: 'Aave Protocol',
-      role: 'Product Manager',
-      period: '2021 — 2022',
-      details: 'Led the V3 market launch initiative, coordinating cross-functional teams across engineering, design, and business development. Implemented e-mode (efficiency mode) and isolated markets features. Contributed to governance proposals and community engagement strategies.',
-    },
-    {
-      company: 'Chainalysis',
-      role: 'Associate Product Manager',
-      period: '2020 — 2021',
-      details: 'Built compliance and investigation tools for cryptocurrency exchanges and government agencies. Developed transaction monitoring dashboards and risk scoring algorithms. Worked closely with clients including major CEXs and federal regulators.',
+      company: 'Private Crypto Investment Office',
+      role: 'Investment Research & Risk Analyst',
+      period: '2022 — Present',
+      location: 'Remote | Miami, FL',
+      details: [
+        'Led investment-grade due diligence across 200+ Web3 projects spanning DeFi, Layer 2, RWAs, and derivatives ecosystems',
+        'Evaluated tokenomics, vesting schedules, emission models, and unlock risks to assess long-term supply pressure',
+        'Conducted smart contract audit analysis and protocol-level risk assessments',
+        'Performed on-chain liquidity, wallet concentration, and capital flow analysis using Dune, Nansen, and Arkham',
+        'Built proprietary research frameworks integrating token valuation, incentive modeling, and market positioning',
+        'Delivered structured investment memos and risk reports supporting capital allocation decisions',
+        'Developed automated monitoring systems tracking new launches, liquidity shifts, and narrative rotations',
+      ],
     },
   ]
 
   return (
     <section>
-      <h2 className="mb-4 text-xl font-semibold">Work Experience</h2>
-      <div className="space-y-6">
+      <h2 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">Professional Experience</h2>
+      <div className="space-y-8">
         {experiences.map((exp) => (
-          <div key={exp.company} className="">
-            <div className="flex items-baseline justify-between">
-              <div>
-                <p className="font-medium">{exp.company}</p>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400">{exp.role}</p>
+          <div key={exp.company} className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
+            <div className="mb-3">
+              <div className="flex items-baseline justify-between mb-1">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{exp.company}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{exp.period}</p>
               </div>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">{exp.period}</p>
+              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">{exp.role}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-500">{exp.location}</p>
             </div>
-            <p className="mt-2 text-neutral-700 dark:text-neutral-300">{exp.details}</p>
+            <ul className="mt-3 space-y-2">
+              {exp.details.map((detail, idx) => (
+                <li key={idx} className="text-sm text-gray-700 dark:text-gray-400 flex">
+                  <span className="mr-2 text-gray-400 dark:text-gray-600">•</span>
+                  <span>{detail}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>

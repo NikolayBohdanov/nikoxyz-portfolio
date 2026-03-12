@@ -17,7 +17,7 @@ export default function Page() {
               <div className="absolute -inset-1 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
               <Image
                 src="/avatar.png"
-                alt="Nikolay - Crypto Researcher"
+                alt="Nikolay Bohdanov - Web3 Research & Product"
                 width={128}
                 height={128}
                 className="relative rounded-full border-2 border-gray-200 dark:border-gray-800"
@@ -27,37 +27,38 @@ export default function Page() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Hi, I'm <span className="gradient-text">Nikolay</span>
+            Hi, I'm <span className="gradient-text">Nikolay Bohdanov</span>
           </h1>
           
-          <p className="text-xl text-gray-700 dark:text-gray-400 mb-4">
-            Crypto Researcher & Product Manager
+          <p className="text-xl text-gray-900 dark:text-gray-400 mb-4">
+            Web3 Data Analyst | Product Manager | Business Development
           </p>
           
-          <p className="text-gray-700 dark:text-gray-500 max-w-lg mx-auto">
-            Specializing in tokenomics, DeFi protocols, and on-chain analytics.
-            I help teams build sustainable crypto products.
+          <p className="text-gray-800 dark:text-gray-500 max-w-2xl mx-auto">
+            4+ years of blockchain market analysis and 3+ years leading product growth at TwitterScore.io. 
+            Specialized in tokenomics evaluation, on-chain analytics, and data-driven product strategy.
           </p>
         </div>
 
         <div className="max-w-none px-4 md:px-0 prose">
-          <p className="mb-4 text-lg">
-            Crypto-native Product Manager and DeFi enthusiast with deep expertise in tokenized ecosystems, 
-            on-chain analytics, and social-fi platforms. Currently leading product development at TwitterScore, 
-            where I'm building the next generation of crypto research and due diligence tools that help 
-            investors discover alpha through social data.
+          <p className="mb-4 text-lg text-gray-900 dark:text-gray-300">
+            Web3 Research, Data & Product Professional with deep expertise in blockchain market analysis 
+            and product management. Currently serving as Product Manager and Business Development Lead at 
+            TwitterScore.io, where I scaled the platform to 35,000+ accounts under daily monitoring and 
+            launched API and subscription products serving 250+ clients with 80%+ retention.
           </p>
           
-          <p className="mb-4">
-            Passionate about the intersection of AI, social graphs, and blockchain technology. 
-            I believe everything will become tokenized, and I'm dedicated to creating products that 
-            bridge the gap between complex on-chain data and actionable insights for both retail and 
-            institutional users.
+          <p className="mb-4 text-gray-800 dark:text-gray-400">
+            As an Investment Research & Risk Analyst, I've conducted in-depth evaluation of 200+ Web3 projects 
+            across tokenomics, ICO structures, APR models, point systems, and smart contract risk. I specialize 
+            in market research, token evaluation, social graph analysis, and on-chain analytics using industry-leading 
+            tools like Nansen, Dune, Arkham, SQL, and Python to generate data-driven insights.
           </p>
           
-          <p className="mb-8">
-            When I'm not shipping features, you'll find me farming yields across DeFi protocols, 
-            analyzing tokenomics, or exploring emerging L2 ecosystems.
+          <p className="mb-8 text-gray-800 dark:text-gray-400">
+            I'm passionate about bridging the gap between complex blockchain data and actionable investment 
+            strategies. When I'm not building products, you'll find me analyzing emerging DeFi protocols, 
+            Layer 2 ecosystems, and researching asymmetric opportunities in the crypto market.
           </p>
         </div>
 
@@ -65,20 +66,20 @@ export default function Page() {
         <section className="stats-section my-8 -mx-4 px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <p className="stat-number">50+</p>
-              <p className="stat-label">Protocols</p>
+              <p className="stat-number">200+</p>
+              <p className="stat-label">Projects Analyzed</p>
             </div>
             <div className="text-center">
-              <p className="stat-number">5+</p>
-              <p className="stat-label">Years</p>
+              <p className="stat-number">35K+</p>
+              <p className="stat-label">Accounts Monitored</p>
             </div>
             <div className="text-center">
-              <p className="stat-number">100+</p>
-              <p className="stat-label">Reports</p>
+              <p className="stat-number">250+</p>
+              <p className="stat-label">API Clients</p>
             </div>
             <div className="text-center">
-              <p className="stat-number">10+</p>
-              <p className="stat-label">Projects</p>
+              <p className="stat-number">4+</p>
+              <p className="stat-label">Years Experience</p>
             </div>
           </div>
         </section>

@@ -208,9 +208,9 @@ body {
   color: #ffffff;
 }
 
-/* Prose */
+/* Prose - Improved Light Mode Contrast */
 .prose p {
-  color: #262626;
+  color: #171717;
 }
 
 .dark .prose p {
@@ -224,6 +224,27 @@ body {
 
 .dark .prose strong {
   color: #ffffff;
+}
+
+/* Additional Light Mode Improvements */
+.text-gray-700 {
+  color: #404040 !important;
+}
+
+.text-gray-800 {
+  color: #262626 !important;
+}
+
+.text-gray-900 {
+  color: #171717 !important;
+}
+
+.text-gray-600 {
+  color: #525252 !important;
+}
+
+.text-gray-500 {
+  color: #737373 !important;
 }
 
 /* Scrollbar hide */
