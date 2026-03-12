@@ -30,35 +30,25 @@ export default function Page() {
             Hi, I'm <span className="gradient-text">Nikolay Bohdanov</span>
           </h1>
           
-          <p className="text-xl text-gray-900 dark:text-gray-400 mb-4">
+          <p className="text-xl text-gray-700 dark:text-gray-200 mb-4">
             Web3 Data Analyst | Product Manager | Business Development
           </p>
           
-          <p className="text-gray-800 dark:text-gray-500 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
             4+ years of blockchain market analysis and 3+ years leading product growth at TwitterScore.io. 
             Specialized in tokenomics evaluation, on-chain analytics, and data-driven product strategy.
           </p>
         </div>
 
-        <div className="max-w-none px-4 md:px-0 prose">
-          <p className="mb-4 text-lg text-gray-900 dark:text-gray-300">
-            Web3 Research, Data & Product Professional with deep expertise in blockchain market analysis 
-            and product management. Currently serving as Product Manager and Business Development Lead at 
-            TwitterScore.io, where I scaled the platform to 35,000+ accounts under daily monitoring and 
-            launched API and subscription products serving 250+ clients with 80%+ retention.
+        <div className="max-w-none px-4 md:px-0 prose mb-8">
+          <p className="mb-4 text-base text-gray-700 dark:text-gray-200">
+            Product Manager and Business Development Lead at TwitterScore.io, where I scaled the platform to 35K+ accounts 
+            under daily monitoring and launched API products serving 250+ clients with 80%+ retention.
           </p>
           
-          <p className="mb-4 text-gray-800 dark:text-gray-400">
-            As an Investment Research & Risk Analyst, I've conducted in-depth evaluation of 200+ Web3 projects 
-            across tokenomics, ICO structures, APR models, point systems, and smart contract risk. I specialize 
-            in market research, token evaluation, social graph analysis, and on-chain analytics using industry-leading 
-            tools like Nansen, Dune, Arkham, SQL, and Python to generate data-driven insights.
-          </p>
-          
-          <p className="mb-8 text-gray-800 dark:text-gray-400">
-            I'm passionate about bridging the gap between complex blockchain data and actionable investment 
-            strategies. When I'm not building products, you'll find me analyzing emerging DeFi protocols, 
-            Layer 2 ecosystems, and researching asymmetric opportunities in the crypto market.
+          <p className="mb-4 text-base text-gray-700 dark:text-gray-200">
+            As an Investment Research & Risk Analyst, I've evaluated 200+ Web3 projects across tokenomics, 
+            ICO structures, and smart contract risk using Nansen, Dune, Arkham, SQL, and Python for data-driven insights.
           </p>
         </div>
 
