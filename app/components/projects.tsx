@@ -60,7 +60,7 @@ export function Projects() {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700"
+                  className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 hover:-translate-y-0.5 hover:shadow-md transition-all cursor-pointer"
                 >
                   {tech}
                 </span>
