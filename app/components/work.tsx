@@ -42,15 +42,15 @@ export default function WorkExperience() {
             <div className="mb-3">
               <div className="flex items-baseline justify-between mb-1">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{exp.company}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{exp.period}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{exp.period}</p>
               </div>
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">{exp.role}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-500">{exp.location}</p>
+              <p className="text-sm font-medium text-gray-700 dark:text-gray-200">{exp.role}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{exp.location}</p>
             </div>
             <ul className="mt-3 space-y-2">
               {exp.details.map((detail, idx) => (
-                <li key={idx} className="text-sm text-gray-700 dark:text-gray-400 flex">
-                  <span className="mr-2 text-gray-400 dark:text-gray-600">•</span>
+                <li key={idx} className="text-sm text-gray-700 dark:text-gray-200 flex">
+                  <span className="mr-2 text-gray-400 dark:text-gray-400">•</span>
                   <span>{detail}</span>
                 </li>
               ))}
