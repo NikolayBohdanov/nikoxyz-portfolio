@@ -30,7 +30,7 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="transition-all text-muted-foreground hover:text-foreground flex align-middle relative py-1 px-2 m-1"
+                className="transition-all font-medium text-muted-foreground hover:text-foreground hover:-translate-y-0.5 flex align-middle relative py-1 px-2 m-1"
               >
                 {name}
               </Link>

@@ -16,18 +16,20 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="font-bold gradient-text">Nikolay</span>
+            <a href="https://nikoxyz.com/" className="font-bold gradient-text hover:-translate-y-0.5 transition-all duration-200 inline-block">
+              Nikolay
+            </a>
           </div>
           
           {/* Quick Links */}
           <div className="flex gap-6 text-sm">
-            <a href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/privacy" className="font-medium text-muted-foreground hover:text-foreground hover:-translate-y-0.5 transition-all duration-200">
               Privacy
             </a>
-            <a href="/resume.pdf" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/resume.pdf" className="font-medium text-muted-foreground hover:text-foreground hover:-translate-y-0.5 transition-all duration-200">
               Resume
             </a>
-            <a href="mailto:nikolay@twitterscore.io" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="mailto:nikolay@twitterscore.io" className="font-medium text-muted-foreground hover:text-foreground hover:-translate-y-0.5 transition-all duration-200">
               Contact
             </a>
           </div>
