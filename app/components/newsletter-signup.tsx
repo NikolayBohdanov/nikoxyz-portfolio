@@ -47,7 +47,7 @@ export function NewsletterSignup({
   }
 
   return (
-    <div className={`rounded-xl border-border bg-card p-6 ${className}`}>
+    <div className={`rounded-xl border-2 border-primary/30 bg-card p-6 shadow-lg shadow-primary/10 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
         <Mail className="w-5 h-5 text-muted-foreground" />
         <h3 className="text-lg font-semibold text-card-foreground">{title}</h3>
@@ -109,7 +109,7 @@ export function NewsletterSignup({
 // Alternative: ConvertKit Embed Version
 export function NewsletterEmbed({ className = '' }: { className?: string }) {
   return (
-    <div className={`rounded-xl border-border bg-card p-6 ${className}`}>
+    <div className={`rounded-xl border-2 border-primary/30 bg-card p-6 shadow-lg shadow-primary/10 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
         <Mail className="w-5 h-5 text-muted-foreground" />
         <h3 className="text-lg font-semibold text-card-foreground">Stay updated</h3>

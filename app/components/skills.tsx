@@ -35,22 +35,22 @@ export function Skills() {
         {skills.map((skill) => (
           <div
             key={skill.title}
-            className="skills-card card-hover"
+            className="p-6 rounded-xl border border-border bg-card hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 rounded-lg bg-muted">
-                <skill.icon className="w-5 h-5 text-muted-foreground" />
+              <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
+                <skill.icon className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="skills-title">{skill.title}</h3>
+              <h3 className="text-lg font-semibold text-foreground">{skill.title}</h3>
             </div>
             
-            <p className="skills-description">{skill.description}</p>
+            <p className="text-sm text-muted-foreground mb-4">{skill.description}</p>
             
             <div className="flex flex-wrap gap-2">
               {skill.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="skills-tag"
+                  className="px-2.5 py-1 text-xs rounded-md bg-muted border border-border text-foreground hover:bg-card hover:border-primary hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/20 transition-all duration-200 cursor-default"
                 >
                   {tag}
                 </span>

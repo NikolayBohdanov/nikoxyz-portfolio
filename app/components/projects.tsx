@@ -45,7 +45,7 @@ export function Projects() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block p-4 rounded-lg border-border hover:border-ring transition-all bg-card hover:bg-muted card-hover"
+            className="group block p-4 rounded-lg border border-border hover:border-primary transition-all duration-300 bg-card hover:bg-muted hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1"
           >
             <div className="flex items-start justify-between">
               <h3 className="font-semibold text-lg text-card-foreground group-hover:text-muted-foreground transition-colors">
@@ -60,7 +60,7 @@ export function Projects() {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground border-border hover:bg-card hover:border-ring hover:-translate-y-0.5 hover:shadow-md transition-all cursor-pointer"
+                  className="px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground border border-border hover:bg-card hover:border-primary hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/20 transition-all duration-200 cursor-pointer"
                 >
                   {tech}
                 </span>
