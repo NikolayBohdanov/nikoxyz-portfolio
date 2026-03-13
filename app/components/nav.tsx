@@ -44,7 +44,7 @@ export function Navbar() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+                className="p-2 rounded-lg border border-transparent text-muted-foreground hover:text-foreground hover:border-primary hover:bg-muted/30 hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/20 transition-all duration-200"
                 aria-label={link.label}
               >
                 <link.icon className="w-4 h-4" />
