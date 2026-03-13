@@ -35,7 +35,7 @@ export function Skills() {
         {skills.map((skill) => (
           <div
             key={skill.title}
-            className="p-6 rounded-xl border border-border bg-card hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+            className="p-6 rounded-xl border border-border bg-card hover:border-primary hover:bg-muted/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 cursor-pointer"
           >
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
