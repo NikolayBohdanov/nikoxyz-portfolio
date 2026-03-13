@@ -57,13 +57,13 @@
 
   .dark {
     /* Semantic Color Tokens - Dark Mode */
-    --background: 0 0% 9%;          /* neutral-900 */
+    --background: 0 0% 5%;          /* darker background */
     --foreground: 0 0% 98%;         /* neutral-50 */
     
-    --card: 0 0% 3.9%;              /* neutral-950 */
+    --card: 0 0% 8%;                /* slightly lighter than background */
     --card-foreground: 0 0% 98%;    /* neutral-50 */
     
-    --popover: 0 0% 3.9%;           /* neutral-950 */
+    --popover: 0 0% 8%;             /* slightly lighter than background */
     --popover-foreground: 0 0% 98%; /* neutral-50 */
     
     --primary: 0 0% 98%;            /* neutral-50 */
