@@ -22,11 +22,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Nikolay Bohdanov | Web3 Data Analyst & Product Manager',
+    default: 'Nikolay Bohdanov — Senior PM, AI agents × crypto research',
     template: '%s | Nikolay Bohdanov',
   },
-  description: 'Web3 Research, Data & Product Professional with 4+ years of blockchain market analysis and 3+ years leading product growth at TwitterScore.io. Specialized in tokenomics evaluation, on-chain analytics, and data-driven product strategy.',
-  keywords: ['web3', 'blockchain analytics', 'product manager', 'data analyst', 'tokenomics', 'DeFi', 'on-chain analytics', 'TwitterScore', 'Dune', 'Nansen', 'Arkham', 'crypto research', 'investment research', 'business development'],
+  description: 'Product Manager building autonomous AI agents for crypto research and automation. Currently PM at TwitterScore.io (35K accounts, 250+ API clients). Runs a 5-agent personal system on Claude Code + MCP. Open to Senior/Staff PM roles — remote from Kyiv or relocation.',
+  keywords: ['product manager', 'AI agents', 'crypto research', 'Claude Code', 'MCP', 'Anthropic', 'LLM', 'autonomous agents', 'TwitterScore', 'on-chain analytics', 'web3', 'senior PM', 'staff PM'],
   authors: [{ name: 'Nikolay Bohdanov', url: baseUrl }],
   creator: 'Nikolay Bohdanov',
   publisher: 'Nikolay Bohdanov',
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Nikolay Bohdanov | Web3 Data Analyst & Product Manager',
-    description: '4+ years blockchain analysis, 3+ years PM at TwitterScore.io. 200+ projects analyzed, 35K+ accounts monitored, 250+ API clients. Specialized in tokenomics, on-chain analytics, and product growth.',
+    title: 'Nikolay Bohdanov — Senior PM, AI agents × crypto research',
+    description: 'PM at TwitterScore.io (35K accounts, 250+ API clients). Building a 5-agent system on Claude Code + MCP. Open to Senior/Staff PM roles.',
     url: baseUrl,
     siteName: 'Nikolay Bohdanov',
     locale: 'en_US',
@@ -50,14 +50,14 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Nikolay Bohdanov - Web3 Data Analyst & Product Manager',
+        alt: 'Nikolay Bohdanov — Senior PM, AI agents × crypto research',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nikolay Bohdanov | Web3 Data Analyst & Product Manager',
-    description: '4+ years blockchain analysis | PM at TwitterScore.io | 200+ projects analyzed | On-chain analytics specialist (Dune, Nansen, Arkham)',
+    title: 'Nikolay Bohdanov — Senior PM, AI agents × crypto research',
+    description: 'PM at TwitterScore.io. 5-agent system on Claude Code + MCP. Open to Senior/Staff PM roles — remote from Kyiv or relocation.',
     creator: '@nikolayxyz',
     images: ['/og-image.png'],
   },
@@ -77,9 +77,6 @@ export const metadata: Metadata = {
     types: {
       'application/rss+xml': `${baseUrl}/rss`,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code', // Add your Google Search Console verification code
   },
 }
 

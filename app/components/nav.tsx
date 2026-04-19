@@ -6,15 +6,24 @@ const navItems = {
   '/': {
     name: 'home',
   },
+  '/work': {
+    name: 'work',
+  },
   '/blog': {
-    name: 'blog',
+    name: 'writing',
+  },
+  '/now': {
+    name: 'now',
+  },
+  '/about': {
+    name: 'about',
   },
 }
 
 const socialLinks = [
-  { href: 'https://github.com/nikoxyz', icon: Github, label: 'GitHub' },
-  { href: 'https://twitter.com/nikoxyz', icon: Twitter, label: 'Twitter' },
-  { href: 'https://linkedin.com/in/nikoxyz', icon: Linkedin, label: 'LinkedIn' },
+  { href: 'https://github.com/NikolayBohdanov', icon: Github, label: 'GitHub' },
+  { href: 'https://x.com/nikolayxyz', icon: Twitter, label: 'Twitter' },
+  { href: 'https://linkedin.com/in/nikolaybohdanov', icon: Linkedin, label: 'LinkedIn' },
 ]
 
 export function Navbar() {

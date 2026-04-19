@@ -12,8 +12,8 @@ const categories = [
     tools: ['Python', 'SQL', 'Excel', 'Google Sheets', 'BI Tools', 'Git'],
   },
   {
-    name: 'AI & Productivity',
-    tools: ['OpenClaw', 'Tavily', 'Perplexity', 'GPT', 'Notion', 'Trello'],
+    name: 'AI & Agent Infra',
+    tools: ['Claude Code', 'Anthropic SDK', 'MCP', 'Typefully', 'Ollama (bge-m3)', 'Playwright (CDP)', 'Notion'],
   },
 ]
 
