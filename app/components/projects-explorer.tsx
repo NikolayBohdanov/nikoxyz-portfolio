@@ -59,21 +59,6 @@ const projects: Record<Category, { label: string; items: Project[] }> = {
         status: 'live',
       },
       {
-        name: 'TwitterScoreAI',
-        description:
-          '7-handler content automation pipeline: smart drops, airdrop radar, funding rounds, deep dives, leaderboard, reply manager, daily report. Typefully integration + Telegram approval flow for safe autoposting.',
-        tech: ['Typefully API', 'Claude', 'Telegram Bot', 'SQLite'],
-        status: 'live',
-      },
-      {
-        name: 'Dashboard Hub',
-        description:
-          'Unified gateway for all my personal agents — Jobs kanban, fitness recovery, finance ops. One URL, two modes: public demo vs real data after sign-in. Shadcn monochrome UI, Python gateway, Cloudflare Tunnel.',
-        link: 'https://app.nikoxyz.com',
-        tech: ['Python', 'Cloudflare Access', 'Shadcn', 'SQLite'],
-        status: 'live',
-      },
-      {
         name: 'Memory Search v3',
         description:
           'Hybrid FTS5 + bge-m3 semantic search across 144 files / 1707 chunks. Section-aware chunking, recency boost, instant reindex. Shared memory layer for all 5 agents + Jordan.',
@@ -101,11 +86,19 @@ const projects: Record<Category, { label: string; items: Project[] }> = {
         status: 'live',
       },
       {
-        name: 'Smart Drop Cards',
+        name: 'Dashboard Hub',
         description:
-          'Generator for visual crypto-card posts — 5 layouts, dynamic glassmorphism, paste-a-handle workflow. Deployed on Vercel, integrated with TwitterScoreAI.',
+          'Unified gateway for all my personal agents — Jobs kanban, fitness recovery, finance ops. One public URL, two modes: strangers see an aspirational demo, I see my real data after email sign-in. Shadcn monochrome UI, Python gateway, Cloudflare Access.',
+        link: 'https://app.nikoxyz.com',
+        tech: ['Python', 'Cloudflare Access', 'Shadcn', 'SQLite'],
+        status: 'live',
+      },
+      {
+        name: 'TwitterScoreAI — Twitter content suite',
+        description:
+          'Twitter management product: 7-handler content pipeline (smart drops, airdrop radar, funding rounds, deep dives, leaderboard, reply manager, daily report) plus Smart Drop Cards — a visual generator with 5 layouts and dynamic glassmorphism. Typefully integration + Telegram approval flow for safe autoposting.',
         link: 'https://cards.nikoxyz.com',
-        tech: ['Next.js', 'Vercel', 'Canvas API'],
+        tech: ['Typefully API', 'Claude', 'Telegram Bot', 'Next.js', 'Canvas API'],
         status: 'live',
       },
       {
@@ -114,14 +107,6 @@ const projects: Record<Category, { label: string; items: Project[] }> = {
           'Turns product URLs into structured teardowns — deterministic scoring, supplier parser, economics model. Public demo deployed on Vercel.',
         link: 'https://analyzer.nikoxyz.com',
         tech: ['Next.js', 'Claude API', 'Playwright', 'Python'],
-        status: 'live',
-      },
-      {
-        name: 'Dashboard Hub (public demo)',
-        description:
-          'Live demo of the hub dashboard at app.nikoxyz.com. Strangers see aspirational mock data across three tabs; I see my real data after email sign-in. One codebase, two modes.',
-        link: 'https://app.nikoxyz.com',
-        tech: ['Python', 'Shadcn', 'Cloudflare Access'],
         status: 'live',
       },
     ],
