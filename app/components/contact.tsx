@@ -6,11 +6,11 @@ export function Contact() {
       <div className="relative overflow-hidden rounded-2xl bg-card border-border p-8 md:p-12">
         <div className="relative z-10 max-w-2xl">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-card-foreground">
-            Open to Senior/Staff PM roles
+            Let&apos;s Build Something <span className="text-muted-foreground">Together</span>
           </h2>
 
           <p className="text-muted-foreground text-lg mb-6">
-            AI-first or crypto-native teams. Remote from Kyiv, open to relocation. Also happy to chat about advisory, research, or interesting agent-infra problems.
+            Open to product, research, and advisory work across AI-first and crypto-native teams.
           </p>
 
           <div className="space-y-3 mb-8">
@@ -22,7 +22,7 @@ export function Contact() {
             </div>
             <div className="flex items-center gap-3 text-muted-foreground">
               <MapPin className="w-4 h-4" />
-              <span>Kyiv, Ukraine — open to relocation</span>
+              <span>Odesa, Ukraine</span>
             </div>
           </div>
 
