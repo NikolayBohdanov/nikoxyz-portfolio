@@ -25,9 +25,6 @@ export default function Page() {
       <h1 className="font-semibold text-2xl mb-6 tracking-tighter">Blog</h1>
 
       <div className="mb-12 max-w-xl">
-        <p className="text-base font-semibold text-foreground mb-3">
-          I just restarted this blog.
-        </p>
         <p className="text-sm text-muted-foreground leading-relaxed mb-3">
           Concrete notes on building and running AI systems in production — the
           5-agent personal OS that actually runs my life, crypto research
