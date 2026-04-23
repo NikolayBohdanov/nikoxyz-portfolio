@@ -24,16 +24,9 @@ export default function Page() {
     <section>
       <h1 className="font-semibold text-2xl mb-6 tracking-tighter">Blog</h1>
 
-      <div className="mb-12 max-w-xl">
-        <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-          Concrete notes on building and running AI systems in production — the
-          5-agent personal OS that actually runs my life, crypto research
-          pipelines, MCP integrations. What breaks, what I learn.
-        </p>
-        <p className="text-xs text-muted-foreground/70">
-          Build-in-public, no hype · new post every ~2 weeks
-        </p>
-      </div>
+      <p className="mb-12 text-sm text-muted-foreground">
+        Just started · build-in-public, no hype · new post every ~2 weeks
+      </p>
 
       <PostsExplorer posts={posts} />
     </section>

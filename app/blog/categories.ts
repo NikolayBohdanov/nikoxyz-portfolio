@@ -6,7 +6,7 @@ export const CATEGORIES = {
 
 export type CategorySlug = keyof typeof CATEGORIES
 
-export const CATEGORY_ORDER: CategorySlug[] = ['ai-agents', 'crypto-defi', 'personal']
+export const CATEGORY_ORDER: CategorySlug[] = ['crypto-defi', 'ai-agents', 'personal']
 
 export function isCategorySlug(value: string | undefined): value is CategorySlug {
   return !!value && value in CATEGORIES
