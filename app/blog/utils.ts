@@ -51,6 +51,7 @@ function parseFrontmatter(fileContent: string, fileName?: string) {
 }
 
 function getMDXFiles(dir) {
+  if (!fs.existsSync(dir)) return []
   return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx')
 }
 
