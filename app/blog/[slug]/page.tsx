@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
+import { MermaidThemeSync } from 'app/components/mermaid-theme-sync'
 import {
   extractHeadings,
   getBlogPosts,
@@ -111,6 +112,7 @@ export default async function Blog({
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-10">
         <article className="prose prose-neutral dark:prose-invert max-w-none">
           <CustomMDX source={post.content} />
+          <MermaidThemeSync />
         </article>
 
         {showTOC && (

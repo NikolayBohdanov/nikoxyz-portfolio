@@ -471,3 +471,31 @@ html.dark .prose :not(pre) > code {
     display: none;
   }
 }
+
+/* ----- Mermaid diagrams (rehype-mermaid, strategy: img-svg, dark: true) ----- */
+/* Plugin output: <picture><source media="(prefers-color-scheme: dark)" srcset="..."><img ...></picture> */
+
+.prose picture:has(> img[src*="data:image/svg"]),
+.prose .mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+.prose picture > img,
+.prose .mermaid > img,
+.prose .mermaid svg {
+  max-width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+html.dark .prose picture > img,
+html.dark .prose .mermaid > img,
+html.dark .prose .mermaid svg {
+  background-color: #0d0d0d;
+  border-color: #262626;
+}
