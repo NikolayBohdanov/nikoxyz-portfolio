@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 /* Simple Light/Dark mode without CSS variables conflicts */
 html {
@@ -320,4 +321,153 @@ input, textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+/* ----- Blog post rendering (MDX + rehype-pretty-code + autolink-headings) ----- */
+
+/* Shiki dual-theme: show light tokens in light mode, dark tokens in dark mode */
+:root {
+  --shiki-active: var(--shiki-light);
+  --shiki-active-bg: var(--shiki-light-bg);
+}
+
+html.dark {
+  --shiki-active: var(--shiki-dark);
+  --shiki-active-bg: var(--shiki-dark-bg);
+}
+
+.prose pre {
+  background-color: #f6f8fa;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+html.dark .prose pre {
+  background-color: #161b22;
+  border-color: #262626;
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.prose pre code span {
+  color: var(--shiki-active);
+}
+
+.prose pre code span.line {
+  display: inline-block;
+  width: 100%;
+}
+
+/* rehype-pretty-code: title block above code */
+.prose figure[data-rehype-pretty-code-figure] {
+  margin: 1.5rem 0;
+}
+
+.prose [data-rehype-pretty-code-title] {
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-bottom: 0;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: #525252;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+html.dark .prose [data-rehype-pretty-code-title] {
+  background-color: #0d1117;
+  border-color: #262626;
+  color: #a3a3a3;
+}
+
+.prose [data-rehype-pretty-code-title] + pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0;
+}
+
+/* rehype-pretty-code: line highlight + diff markers */
+.prose pre [data-highlighted-line] {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-left: 2px solid #171717;
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
+}
+
+html.dark .prose pre [data-highlighted-line] {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-left-color: #d4d4d4;
+}
+
+/* Inline code */
+.prose :not(pre) > code {
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.85em;
+  font-weight: 500;
+  color: #171717;
+}
+
+html.dark .prose :not(pre) > code {
+  background-color: #262626;
+  border-color: #404040;
+  color: #f5f5f5;
+}
+
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
+
+/* Heading anchors via rehype-autolink-headings */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 5rem;
+  position: relative;
+}
+
+.prose a.anchor {
+  position: absolute;
+  left: -1.25rem;
+  top: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  width: 1.25rem;
+  opacity: 0;
+  color: #a3a3a3;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.prose a.anchor::before {
+  content: '#';
+  font-weight: 400;
+}
+
+.prose h1:hover a.anchor,
+.prose h2:hover a.anchor,
+.prose h3:hover a.anchor,
+.prose h4:hover a.anchor {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .prose a.anchor {
+    display: none;
+  }
 }
