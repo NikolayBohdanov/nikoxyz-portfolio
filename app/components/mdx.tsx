@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeMermaid from 'rehype-mermaid'
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   const headers = data.headers.map((header, index) => (
@@ -67,6 +68,16 @@ const rehypePrettyCodeOptions = {
   },
 }
 
+const rehypeMermaidOptions = {
+  strategy: 'img-svg' as const,
+  dark: true,
+  mermaidConfig: {
+    fontFamily: 'ui-sans-serif, system-ui, -apple-system, sans-serif',
+    flowchart: { htmlLabels: true, curve: 'basis', padding: 12 },
+    themeVariables: { fontSize: '14px' },
+  },
+}
+
 export function CustomMDX(props: React.ComponentProps<typeof MDXRemote>) {
   return (
     <MDXRemote
@@ -86,6 +97,7 @@ export function CustomMDX(props: React.ComponentProps<typeof MDXRemote>) {
                 },
               },
             ],
+            [rehypeMermaid, rehypeMermaidOptions],
             [rehypePrettyCode, rehypePrettyCodeOptions],
           ],
         },
