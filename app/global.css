@@ -499,20 +499,17 @@ html.dark .prose .diagram-hero img {
 html.dark .prose .diagram-hero-light { display: none; }
 html.dark .prose .diagram-hero-dark { display: block; }
 
-/* ----- Mermaid diagrams (rehype-mermaid, strategy: img-svg, dark: true) ----- */
-/* Plugin output: <picture><source media="(prefers-color-scheme: dark)" srcset="..."><img ...></picture> */
+/* ----- MermaidDiagram (pre-rendered SVG pair, local build) ----- */
 
-.prose picture:has(> img[src*="data:image/svg"]),
-.prose .mermaid {
+.prose .mermaid-diagram {
+  margin: 2rem auto;
+  max-width: 100%;
   display: flex;
   justify-content: center;
-  margin: 2rem auto;
 }
 
-.prose picture > img,
-.prose .mermaid > img,
-.prose .mermaid svg {
-  max-width: 100%;
+.prose .mermaid-diagram img {
+  width: 100%;
   height: auto;
   background-color: #ffffff;
   border: 1px solid #e5e5e5;
@@ -520,9 +517,12 @@ html.dark .prose .diagram-hero-dark { display: block; }
   padding: 1rem;
 }
 
-html.dark .prose picture > img,
-html.dark .prose .mermaid > img,
-html.dark .prose .mermaid svg {
+html.dark .prose .mermaid-diagram img {
   background-color: #0d0d0d;
   border-color: #262626;
 }
+
+.prose .mermaid-diagram-light { display: block; }
+.prose .mermaid-diagram-dark { display: none; }
+html.dark .prose .mermaid-diagram-light { display: none; }
+html.dark .prose .mermaid-diagram-dark { display: block; }
