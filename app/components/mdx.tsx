@@ -5,6 +5,7 @@ import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeMermaid from 'rehype-mermaid'
+import { DiagramHero } from './diagram-hero'
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   const headers = data.headers.map((header, index) => (
@@ -54,6 +55,7 @@ const components = {
   Image: RoundedImage,
   a: CustomLink,
   Table,
+  DiagramHero,
 }
 
 const rehypePrettyCodeOptions = {

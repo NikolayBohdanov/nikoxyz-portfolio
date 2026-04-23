@@ -472,6 +472,33 @@ html.dark .prose :not(pre) > code {
   }
 }
 
+/* ----- DiagramHero (Excalidraw PNG, light/dark pair) ----- */
+
+.prose .diagram-hero {
+  margin: 2rem auto;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prose .diagram-hero img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+}
+
+html.dark .prose .diagram-hero img {
+  border-color: #262626;
+  background-color: #0d0d0d;
+}
+
+.prose .diagram-hero-light { display: block; }
+.prose .diagram-hero-dark { display: none; }
+html.dark .prose .diagram-hero-light { display: none; }
+html.dark .prose .diagram-hero-dark { display: block; }
+
 /* ----- Mermaid diagrams (rehype-mermaid, strategy: img-svg, dark: true) ----- */
 /* Plugin output: <picture><source media="(prefers-color-scheme: dark)" srcset="..."><img ...></picture> */
 
