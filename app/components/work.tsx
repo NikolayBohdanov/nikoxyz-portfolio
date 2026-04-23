@@ -20,7 +20,7 @@ export default function WorkExperience() {
       company: 'Private Crypto Investment Office',
       role: 'Investment Research & Risk Analyst',
       period: '2022 — Present',
-      location: 'Remote | Miami, FL',
+      location: 'Remote',
       details: [
         'Led investment-grade due diligence across 200+ Web3 projects spanning DeFi, Layer 2, RWAs, and derivatives ecosystems',
         'Evaluated tokenomics, vesting schedules, emission models, and unlock risks to assess long-term supply pressure',

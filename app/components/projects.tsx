@@ -10,27 +10,27 @@ interface Project {
 const projects: Project[] = [
   {
     name: 'TwitterScore',
-    description: 'Crypto research platform that combines social sentiment analysis with on-chain data to help investors discover early projects and track smart money movements. Features AI-powered alpha detection and influencer credibility scoring.',
+    description: 'Crypto research platform combining social-graph signals with on-chain data. I led product and BD: scaled to 35K+ monitored accounts, launched API serving 250+ paying clients at 80%+ retention, drove 40% YoY active-user growth.',
     link: 'https://twitterscore.io',
-    tech: ['Next.js', 'AI/ML', 'On-Chain Analytics', 'Social Graph API'],
+    tech: ['Product Management', 'API Strategy', 'Social Graph', 'B2B SaaS'],
   },
   {
-    name: 'YieldHunter',
-    description: 'Cross-chain yield farming aggregator that automatically discovers and compares APYs across 20+ DeFi protocols. Includes impermanent loss calculator and risk assessment matrix for liquidity providers.',
-    link: 'https://github.com/NikolayBohdanov/yield-hunter',
-    tech: ['Solidity', 'React', 'Ethers.js', 'Subgraph'],
+    name: 'Jordan — 5-agent AI system',
+    description: 'Autonomous multi-agent system I run in production. Orchestrator + 4 domain agents (research, finance, jobs, fitness) with shared semantic memory, supervisors, crash recovery, and 8 daily digest pipelines. Runs 24/7.',
+    link: 'https://app.nikoxyz.com',
+    tech: ['Claude Code', 'MCP', 'Anthropic SDK', 'bge-m3 RAG'],
   },
   {
-    name: 'TokenSight',
-    description: 'Real-time token launch monitoring bot that tracks new pairs on Uniswap, SushiSwap, and PancakeSwap. Alerts users to potential gems with custom filters for liquidity, holder distribution, and contract safety.',
-    link: 'https://github.com/NikolayBohdanov/token-sight',
-    tech: ['Node.js', 'Web3.js', 'Telegram Bot API', 'MongoDB'],
+    name: 'TwitterScoreAI',
+    description: 'Content automation pipeline for crypto-research posts: 7 handlers (smart drops, funding rounds, deep dives, reply scout), Typefully integration, Telegram approval flow. Built on top of TwitterScore data.',
+    link: 'https://twitterscore.io',
+    tech: ['Typefully API', 'Claude', 'Telegram Bot', 'SQLite'],
   },
   {
-    name: 'CryptoPortfolio Tracker',
-    description: 'Personal DeFi dashboard aggregating positions across multiple chains (Ethereum, Arbitrum, Base, Solana). Tracks P&L, impermanent loss, and auto-compounding yields with beautiful visualizations.',
-    link: 'https://github.com/NikolayBohdanov/defi-dashboard',
-    tech: ['TypeScript', 'Next.js', 'TailwindCSS', 'Dune Analytics API'],
+    name: 'AI Product Analyzer',
+    description: 'Turns product URLs into structured teardowns — supplier parser, deterministic scoring, economics model. Public demo deployed on Vercel.',
+    link: 'https://analyzer.nikoxyz.com',
+    tech: ['Next.js', 'Claude API', 'Playwright', 'Python'],
   },
 ]
 

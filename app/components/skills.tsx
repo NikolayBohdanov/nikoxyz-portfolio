@@ -20,10 +20,10 @@ const skills = [
     tags: ['API Design', 'B2B SaaS', 'Strategic Partnerships', 'Market Analysis'],
   },
   {
-    title: 'Web3 Tools & Platforms',
+    title: 'AI & Automation',
     icon: Users,
-    description: 'CryptoRank, Dropstab, RootData, TwitterScore, DexScreener, DeFiLlama',
-    tags: ['BlockchainExplorers', 'DexScreener', 'DeBank', 'OpenClaw', 'Tavily'],
+    description: 'Multi-agent systems, LLM orchestration, RAG pipelines, browser automation, autonomous agents running in production',
+    tags: ['Claude Code', 'MCP', 'Anthropic SDK', 'bge-m3', 'Playwright', 'Typefully'],
   },
 ]
 
