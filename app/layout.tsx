@@ -76,6 +76,7 @@ export const metadata: Metadata = {
     canonical: baseUrl,
     types: {
       'application/rss+xml': `${baseUrl}/rss`,
+      'application/feed+json': `${baseUrl}/feed.json`,
     },
   },
 }
@@ -98,6 +99,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss" />
+        <link rel="alternate" type="application/feed+json" title="JSON Feed" href="/feed.json" />
       </head>
       <body className="antialiased max-w-2xl mx-4 mt-8 lg:mx-auto bg-background text-foreground transition-colors duration-200">
         <Providers>

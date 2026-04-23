@@ -77,3 +77,41 @@ function getMDXData(dir) {
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
 }
+
+export function getReadingTime(content: string): { minutes: number; words: number } {
+  const text = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`]*`/g, '')
+    .replace(/[#*_~>\-]+/g, ' ')
+  const words = text.trim().split(/\s+/).filter(Boolean).length
+  const minutes = Math.max(1, Math.round(words / 220))
+  return { minutes, words }
+}
+
+export function extractHeadings(content: string): { level: number; text: string; slug: string }[] {
+  const lines = content.split('\n')
+  const headings: { level: number; text: string; slug: string }[] = []
+  let inCodeBlock = false
+
+  for (const line of lines) {
+    if (line.trim().startsWith('```')) {
+      inCodeBlock = !inCodeBlock
+      continue
+    }
+    if (inCodeBlock) continue
+
+    const match = line.match(/^(#{2,4})\s+(.+?)\s*$/)
+    if (match) {
+      const level = match[1].length
+      const text = match[2].replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim()
+      const slug = text
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+      headings.push({ level, text, slug })
+    }
+  }
+
+  return headings
+}
