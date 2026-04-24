@@ -1,47 +1,35 @@
 ---
-title: 5 Agents Running My Life After 3 Months in Production
+title: 5 Agents Running My Life, 3 Months In
 publishedAt: 2026-04-24
-summary: Five Claude-based agents on a Mac Mini have shipped work for me every day for three months. Honest notes on the architecture, what broke, and what I'd do differently.
+summary: Five Claude-based agents on a Mac Mini shipped my mornings, finances, workouts, and job pipeline every day for three months. What held up, what broke, and what I'd do differently.
 category: ai-agents
 ---
 
 <VideoHero slug="5-agents-blog-promo" alt="60-second promo: the 5-agent OS running my life" />
 
-**Most multi-agent demos survive one run. Mine has shipped work for me every day for three months.**
-
-Five Claude-based agents on a single Mac Mini, ~80 LaunchAgents running in the background, one Telegram bot per agent. They handle my research digests, finances, fitness programming, job pipeline, and the stuff I'd rather not delegate to a calendar reminder. No SaaS bills. No cloud render. No per-token accounting — everything sits on a single Claude Max subscription.
-
-This post is the honest version: what the architecture actually looks like, what broke in production, and what I'd do differently if I started over tomorrow.
-
-## The team
-
-**Jordan** — the orchestrator, named after my dog. Routes every Telegram message to the right specialist, handles personal ops I don't want to delegate, knows how to wake the others when they freeze. Lives at `~/.claude/`. Bot: `@NikoClaudeCode_bot`.
-
-**Research.** Daily digests across four streams: a curated crypto Twitter list, AI news, Discord alpha channels, and my email inbox. Ten LaunchAgents fire through the morning. One concrete output: the 09:25 morning brief that hits Telegram before I've had coffee.
-
-**Finance.** Monobank + Binance + DeBank + Merkl sync, P2P conversion tracking, monthly budget roll-ups, subscription matcher. Nine LaunchAgents. Runs on Sonnet — moving it off Opus saved roughly 5× on token consumption without any visible quality drop.
-
-**Fitness.** Workout programming, recovery logs, nutrition intake, weekly retrospectives summarising what moved and what stalled. Ports to the same dashboard as everything else, so I see health and job pipeline in one view.
-
-**Jobs.** Career-ops pipeline: scans 46 ATS boards plus freelance aggregators, runs a bge-m3 prefilter, scores via Pydantic, tailors CVs, and tracks everything in a 10-column Kanban at [app.nikoxyz.com/#jobs](https://app.nikoxyz.com/#jobs). Thirteen LaunchAgents. The only agent that occasionally wakes me up at midnight with a high-fit match.
-
-Day-job context: I'm PM at [TwitterScore](https://twitterscore.io) — 35K monitored crypto accounts, 250+ API clients. Building agents at night is where I learn what's shipping-grade.
-
-## How they talk to each other
-
-Three primitives keep the agents connected.
-
-**A file-based message bus.** Any agent can drop JSON into `~/projects/shared-agent-hub/messages/<target>/<timestamp>-<source>.json`. The target picks it up on its next wake. Trivially debuggable — I can `cat` the directory and see the last ten messages. Not horizontally scalable, but five agents with one user is nowhere near that limit.
-
-**Telegram as the human interface.** Five bots, one per agent. I can trigger any of them from any device. Jordan routes cross-agent asks so I don't have to remember who handles what.
-
-**Hybrid memory search.** A custom MCP server runs FTS5 keyword + bge-m3 semantic similarity + recency boost over 144 files and ~1700 chunks. Every agent loads the same server in its `.mcp.json`, so any of them can recall *"what did we decide about X last month"* without me re-explaining. Embeddings run locally via Ollama. A deep-dive on this is coming in a separate memory post.
+Most multi-agent demos survive one run. Mine has shipped my mornings, my finances, my workouts, and my job pipeline every day for three months. What follows isn't a success story; it's the one system that survived long enough to teach me what production actually demands.
 
 <FiveAgentsArchitecture />
 
-No Kafka, no Redis, no cloud database. The entire message layer is a folder on disk; the entire memory layer is SQLite + local vectors. Every part of the system is something I can inspect with `ls` and `cat`.
+## The cast
 
-A typical cross-agent handoff is one file write:
+Jordan is the orchestrator, named after my dog. Every Telegram message lands on Jordan first, and Jordan routes it to whichever specialist owns the domain. Jordan also handles anything personal I won't delegate to an agent I wrote last month: reminders that need context, cross-agent coordination, changes to the system itself. Lives at `~/.claude/`. Bot: `@NikoClaudeCode_bot`.
+
+Research runs daily digests across four streams: a curated crypto Twitter list, AI news, Discord alpha channels, and my Gmail inbox. Ten LaunchAgents fire through the morning. The most concrete output is the 09:25 UTC brief that hits Telegram before I've had coffee.
+
+Finance syncs Monobank, two Binance accounts, DeBank, and Merkl. Tracks P2P conversions, monthly budgets, subscription churn. Nine LaunchAgents. Runs on Sonnet; moving it off Opus cut token consumption 5× with no drop in output quality.
+
+Fitness handles workout programming, recovery logs, nutrition intake, and weekly retrospectives summarising what moved and what stalled. Ports to the same dashboard as the other agents, so I see training load and job pipeline in one view.
+
+Jobs is the most elaborate of the four: it scans 46 ATS boards plus freelance aggregators, runs a bge-m3 prefilter, scores via Pydantic, tailors CVs, and tracks everything in a 10-column Kanban at [app.nikoxyz.com/#jobs](https://app.nikoxyz.com/#jobs). Thirteen LaunchAgents. The only agent that occasionally wakes me up at midnight with a high-fit match.
+
+Day-job context: I'm PM at [TwitterScore](https://twitterscore.io), 35K monitored crypto accounts and 250+ API clients. The blog posts are about the agents I build at night; the agents I build at night are where I learn what's shipping-grade for the day job.
+
+## Pick boring infrastructure
+
+Three primitives keep everything connected, and none of them would look interesting in a keynote.
+
+The message bus is a folder on disk. Any agent drops JSON into `~/projects/shared-agent-hub/messages/<target>/<timestamp>-<source>.json`. The target picks it up on its next wake. A typical cross-agent handoff is one file write:
 
 ```json
 // ~/projects/shared-agent-hub/messages/jobs/2026-04-22T09-17-research.json
@@ -56,15 +44,19 @@ A typical cross-agent handoff is one file write:
 }
 ```
 
-Jobs picks it up on its next wake (every 2h), decides, writes a response JSON back to `messages/research/...`. No queue, no broker, no schema registry — just a folder and a convention.
+Jobs picks that up on its next wake (every two hours), decides, and writes a response JSON back to `messages/research/...`. No queue, no broker, no schema registry. A folder and a convention.
 
-## What production teaches you
+Memory is SQLite plus local vectors. A custom MCP server runs FTS5 keyword search, bge-m3 semantic similarity, and a recency boost over 144 files and roughly 1,700 chunks. Every agent loads the same MCP in its `.mcp.json`, so any of them can recall *"what did we decide about X last month"* without me re-explaining. Embeddings run locally via Ollama on an external SSD.
 
-You can ship five agents in a weekend. Keeping them alive for three months teaches you different things. Three specific incidents.
+Telegram is the human interface. Five bots, one per agent. I can trigger any of them from any device. Jordan routes cross-agent asks so I don't have to remember who handles what.
 
-### Supervisors vs. inactivity
+The anti-pattern here is over-architecting. Every tutorial on multi-agent systems tells you to use a proper queue (Redis, NATS), a proper database (Postgres), a proper orchestrator (LangGraph, Temporal). For five agents and one user, I'm three orders of magnitude below the scale where any of those pay off. `ls` and `cat` are my debug tools, and that's a feature.
 
-Early agents died mid-task because macOS `launchd` killed Claude Code processes during idle periods, wiping the conversation buffer on the way out. Fix: a supervisor per agent that catches restarts and runs a flush-before-restart protocol.
+## Supervisors for inactivity kills
+
+My first agents died mid-task in the second week. macOS `launchd` kills Claude Code processes during idle periods, and the kill wiped the conversation buffer on the way out. I'd come back to a Telegram bot that had lost every decision from the last hour of work and couldn't tell me what it had been doing.
+
+The fix was a supervisor process per agent that catches the restart signal and runs a flush protocol before the kill completes. Not a graceful shutdown; a forced save.
 
 ```bash
 # runs before every agent restart
@@ -75,7 +67,7 @@ bun ~/.claude/scripts/flush-helpers.ts \
 launchctl kickstart -k gui/501/ai.jordan.claude-telegram
 ```
 
-Shared helper: `~/.claude/scripts/flush-helpers.ts` (223 lines). The signature every supervisor calls:
+All five agents share the flush logic. One helper file, 223 lines, one API. The signature every supervisor calls:
 
 ```ts
 export function extractConversation(jsonlPath: string, maxChars = 80_000): string {
@@ -85,15 +77,21 @@ export function extractConversation(jsonlPath: string, maxChars = 80_000): strin
 }
 ```
 
-Centralising the flush logic meant one bug fix covered all five agents.
+Centralising meant one bug fix covered all five. When I added WAL retries for concurrent SQLite writes, I added them once. When Haiku's context window changed, I changed one default. When I realised I needed to exclude tool-call blobs from the summary because they were eating the budget, same thing.
 
-### The March cache bug
+The supervisor only covers clean kills, though. Crashes still happen, and those have nothing to flush. The next layer was micro-flushing: a checkpoint every three hours that writes the running summary to memory automatically, regardless of whether a kill is coming. Worst-case loss on crash is now three hours, not a day. In practice it runs on Haiku, which costs nothing at the Max tier and adds about two seconds to the three-hour cadence.
 
-In March, Anthropic shipped a prompt-caching change that doubled-to-tripled per-request costs for anyone with a large cached system prompt — see [GH #41930](https://github.com/anthropics/claude-code/issues/41930) and [The Register's write-up](https://www.theregister.com/2026/03/31/anthropic_claude_code_limits/).
+Takeaway: the restart story is never "it'll probably be fine". Write the flush once, reuse it everywhere, and assume the next kill will be uncatchable.
 
-My monthly bill didn't spike because I'm on Max. My *context window usage* did — silently. For a week I was losing about 20% more context per turn without noticing, because I only watched the flat subscription cost, not per-turn token consumption. Lesson: agents need observability on context growth, not just task outcomes.
+## The March cache bug
 
-A token-drain report now runs nightly on Research. Sample line:
+In March, Anthropic shipped a prompt-caching change that doubled-to-tripled per-request costs for anyone with a large cached system prompt. The community tracked it in [GH #41930](https://github.com/anthropics/claude-code/issues/41930), and The Register ran [a write-up](https://www.theregister.com/2026/03/31/anthropic_claude_code_limits/) a few weeks later.
+
+My monthly bill didn't spike, because I'm on the Max subscription and the bill is flat by design. My context window usage did spike, silently. For a week I was losing about 20% more context per turn than before. That meant conversations hit the compaction threshold sooner, more auto-summary cycles, and degraded output quality. I only caught it when two different agents gave me worse digest writeups on the same weekend.
+
+The problem wasn't the cache change. The problem was that I watched the bill (flat, by design) instead of per-turn token consumption (spiking, invisible).
+
+A token-drain report now runs nightly on Research:
 
 ```txt
 2026-04-22 23:50 · finance · avg 48.2k tokens/turn (↑12% vs 7d median)
@@ -101,34 +99,40 @@ A token-drain report now runs nightly on Research. Sample line:
                             · action: moved Merkl block below tool defs
 ```
 
-It's caught two regressions since.
+Two regressions caught since I added it. One was my own, a poorly-ordered prompt in the Fitness agent. One was Claude Code 1.2 shipping a longer default system prompt I hadn't noticed until the 12% spike fired the alert.
 
-### Context loss on every restart
+Takeaway: subscription pricing decouples your bill from your usage. If you run agents on Max, you need observability on context growth, not on cost.
 
-Even with the flush protocol, restart cadence was high enough (inactivity + crashes + debug reloads) that *"what did we just decide"* would evaporate between conversations. Two fixes in sequence.
+## Sonnet over Opus, for most agents
 
-First, `/save` — a manual flush command usable from terminal or Telegram at any time. Second, micro-flush: a Haiku-powered checkpoint every three hours that writes the current summary into memory automatically. Maximum loss on crash is now capped at three hours instead of *"everything since last manual save"*.
+Half my agents don't need Opus. Moving Finance from Opus to Sonnet cut its per-day token consumption by a factor of five, and I couldn't tell the difference in the output for a full month.
 
-Memory flush v3 details are getting their own dedicated post — the mechanics matter enough that it's a piece on its own.
+This surprised me. I'd assumed "use the best model" was always right, because that's what the influencers say. It's wrong when the task is deterministic parsing and categorisation, which is what Finance does: read a bank statement, categorise the transactions, roll up by month, flag unusual spikes. Sonnet nails that at a fraction of the cost. Where it fell short was the edge case: a new merchant name Sonnet hadn't seen before got categorised as "other" where Opus would have guessed correctly from context. I fixed that with a three-line override list rather than re-upgrading the whole agent.
 
-## What I'd do differently
+The agents I kept on Opus are the ones that need judgment. Jordan, because it routes ambiguous Telegram messages and handles personal ops where a wrong call is expensive. Jobs, because its fit-scoring compares a candidate JD against my profile, and the failure mode is applying to jobs that waste my time.
 
-**Start with the official Anthropic courses, not YouTube.**
+Research runs Haiku for digests, because digests are summarisation. Fitness runs Sonnet, because workout programming isn't creative writing.
 
-My first month on Claude Code was a loop: watch a demo, copy the setup, hit a wall two hours in because the demo skipped the foundation, move on. I was collecting patterns without understanding the system underneath.
+The anti-pattern is defaulting every agent to the top tier because it's in the session config template. Go through them and ask: does this agent need to *reason*, or does it need to *recognise*?
 
-The fix was a weekend on [**Anthropic Academy**](https://anthropic.skilljar.com/). I ran [**Claude 101**](https://anthropic.skilljar.com/claude-101) and [**Claude Code in Action**](https://anthropic.skilljar.com/claude-code-in-action) back-to-back — free, official, over ten hours total.
+## Start with the official courses
 
-They gave me the base I'd been reverse-engineering: capabilities and hard limits, how tool use is really structured, how hooks and memory actually work under the hood, where the context window bites — and why some clever-looking workflows from demos were just fighting the model.
+My first month on Claude Code was a YouTube demo loop. Watch a setup, copy it, hit a wall two hours in because the demo skipped the foundation, move on. I was collecting patterns without the system underneath, and I had no way to tell a good pattern from a cargo cult.
 
-After that, every influencer video made sense — I could tell pattern from noise from confidently wrong.
+The fix was a weekend on [Anthropic Academy](https://anthropic.skilljar.com/). I ran [Claude 101](https://anthropic.skilljar.com/claude-101) and [Claude Code in Action](https://anthropic.skilljar.com/claude-code-in-action) back-to-back. Free, official, about ten hours of material between them.
 
-Ten-plus hours with the source beat a month of pattern-matching in the dark.
+Afterwards, every influencer video made sense in a different way. I could tell pattern from noise from confidently wrong. I could see when a workflow was fighting the model instead of using it. The things I'd spent a month reverse-engineering were all in the first course, in the order you need to learn them.
+
+Ten hours with the source beat a month of pattern-matching in the dark. If you're starting on Claude Code, do the courses first.
 
 ## What's next
 
-**Current cliff:** giving agents **write access to each other's data** — not just read-only across the shared hub. Right now Finance can read the Jobs Kanban but not update it when an application closes; Research can suggest topics to Jobs but not file them. Biggest unlock + biggest blast-radius risk. Working on scoped write permissions with revertable diffs before I flip any switches.
+The current cliff is write access. Every agent can read the shared hub and the memory MCP, but writes stay scoped per-agent. Finance can see that Jobs received an interview request, but it can't update the Kanban column when the interview gets booked. Research can suggest topics to Jobs, but can't file them.
 
-**What it costs.** Everything sits on my Claude Max subscription (~$200/mo all-in, notional per-agent cost somewhere in the $20–40/mo range with no per-token billing). Embeddings run locally via Ollama. Docker handles image rendering. Zero SaaS, zero cloud.
+Giving agents write access to each other's data is the biggest unlock I have left and the biggest blast-radius risk. I'm working on scoped write permissions with revertable diffs, so a bad write rolls back in one command.
 
-Full project catalog at [`/projects#ai-agents`](/projects#ai-agents). If you're running something similar and want to compare notes, I'm [`@nikolayxyz`](https://x.com/nikolayxyz) on X.
+Everything sits on my Claude Max subscription, about $200 a month all in. Embeddings run locally. Docker handles image rendering. Zero SaaS, zero cloud.
+
+Full project catalogue at [/projects#ai-agents](/projects#ai-agents).
+
+If you're running something similar, I'm [`@nikolayxyz`](https://x.com/nikolayxyz) on X.
