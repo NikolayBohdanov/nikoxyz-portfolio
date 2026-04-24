@@ -41,21 +41,47 @@ Three primitives keep the agents connected.
 
 No Kafka, no Redis, no cloud database. The entire message layer is a folder on disk; the entire memory layer is SQLite + local vectors. Every part of the system is something I can inspect with `ls` and `cat`.
 
+A typical cross-agent handoff looks like this:
+
+<MermaidDiagram slug="5-agents-message-bus" alt="Sequence diagram of the file-based message bus: Research writes a JSON file, Jobs reads it on its next wake, parses it, and writes a response back" />
+
 ## 4. What production actually teaches you
 
 You can ship five agents in a weekend. Keeping them alive for three months teaches you different things. Three specific incidents:
 
 ### 4.1 Supervisors vs. inactivity
 
-Early agents died mid-task because macOS `launchd` killed Claude Code processes during idle periods, wiping the conversation buffer on the way out. Fix: a supervisor per agent that catches restarts and runs a flush-before-restart protocol. The supervisor dumps the current JSONL session, summarises it through Sonnet (~80K chars → ~8K), writes to the memory MCP with WAL + retries, then relaunches.
+Early agents died mid-task because macOS `launchd` killed Claude Code processes during idle periods, wiping the conversation buffer on the way out. Fix: a supervisor per agent that catches restarts and runs a flush-before-restart protocol.
 
-Shared helper: `~/.claude/scripts/flush-helpers.ts` (223 lines). Every supervisor imports it. Centralising the flush logic meant one bug fix covered five agents.
+<MermaidDiagram slug="5-agents-flush-lifecycle" alt="Sequence diagram showing the supervisor intercepting an inactivity kill from launchd, dumping the JSONL session, summarising via Sonnet, persisting to the memory MCP with WAL retries, then relaunching the agent" />
+
+Shared helper: `~/.claude/scripts/flush-helpers.ts` (223 lines). The signature every supervisor calls:
+
+```ts
+export function extractConversation(jsonlPath: string, maxChars = 80_000): string {
+  // Parses the Claude Code session file, strips Telegram XML noise,
+  // summarises tool calls into one-liners, trims to maxChars from the end.
+  // The return value is fed to Sonnet for the flush summary.
+}
+```
+
+Centralising the flush logic meant one bug fix covered all five agents.
 
 ### 4.2 The March 2026 cache bug
 
 In March, Anthropic shipped a prompt-caching change that doubled-to-tripled per-request costs for anyone with a large cached system prompt — see [GH #41930](https://github.com/anthropics/claude-code/issues/41930) and [The Register's write-up](https://www.theregister.com/2026/03/31/anthropic_claude_code_limits/).
 
-My monthly bill didn't spike because I'm on Max. My *context window usage* did — silently. For a week I was losing about 20% more context per turn without noticing, because I only watched the flat subscription cost, not per-turn token consumption. Lesson: agents need observability on context growth, not just task outcomes. A token-drain report now runs nightly on Research. It's caught two regressions since.
+My monthly bill didn't spike because I'm on Max. My *context window usage* did — silently. For a week I was losing about 20% more context per turn without noticing, because I only watched the flat subscription cost, not per-turn token consumption. Lesson: agents need observability on context growth, not just task outcomes.
+
+A token-drain report now runs nightly on Research. Sample line:
+
+```txt
+2026-04-22 23:50 · finance · avg 48.2k tokens/turn (↑12% vs 7d median)
+                            · top offender: Merkl sync prompt (+6.1k)
+                            · action: moved Merkl block below tool defs
+```
+
+It's caught two regressions since.
 
 ### 4.3 Context loss on every restart
 
