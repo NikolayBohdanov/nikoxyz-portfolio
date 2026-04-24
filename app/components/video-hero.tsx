@@ -3,6 +3,7 @@ type Props = {
   alt: string
   width?: number
   height?: number
+  /** Override poster path; defaults to /videos/<slug>-poster.jpg */
   poster?: string
 }
 
@@ -19,7 +20,7 @@ export function VideoHero({
         src={`/videos/${slug}.mp4`}
         width={width}
         height={height}
-        poster={poster}
+        poster={poster ?? `/videos/${slug}-poster.jpg`}
         controls
         preload="metadata"
         playsInline
