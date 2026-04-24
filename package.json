@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint:prose": "vale app/blog/posts/",
+    "lint:prose:post": "vale"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.4",
