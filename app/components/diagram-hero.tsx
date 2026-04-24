@@ -5,11 +5,11 @@ type Props = {
   height?: number
   /**
    * Which rendering engine produced the diagram.
-   * - 'excalidraw' (default): PNG pair — hand-drawn, tuned via excalidraw-architect-mcp or mermaid-to-excalidraw + label-shift.
-   * - 'mermaid': SVG pair — clean technical, via mmdc v11 + ELK + look:handDrawn.
+   * - 'mermaid' (default): SVG pair via mmdc v11 + ELK + look:handDrawn + colored palette.
+   * - 'excalidraw': PNG pair via excalidraw-architect-mcp or mermaid-to-excalidraw + label-shift.
    * Both live under /diagrams/<slug>-hero.<ext> + <slug>-hero.dark.<ext>.
    */
-  engine?: 'excalidraw' | 'mermaid'
+  engine?: 'mermaid' | 'excalidraw'
 }
 
 export function DiagramHero({
@@ -17,7 +17,7 @@ export function DiagramHero({
   alt,
   width = 1200,
   height = 700,
-  engine = 'excalidraw',
+  engine = 'mermaid',
 }: Props) {
   const ext = engine === 'mermaid' ? 'svg' : 'png'
   const lightSrc = `/diagrams/${slug}-hero.${ext}`
