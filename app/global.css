@@ -499,6 +499,27 @@ html.dark .prose .diagram-hero img {
 html.dark .prose .diagram-hero-light { display: none; }
 html.dark .prose .diagram-hero-dark { display: block; }
 
+/* ----- Video hero ----- */
+.prose .video-hero {
+  margin: 2rem auto;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prose .video-hero-video {
+  width: 100%;
+  height: auto;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.75rem;
+  background-color: #000;
+  aspect-ratio: 16 / 9;
+}
+
+html.dark .prose .video-hero-video {
+  border-color: #262626;
+}
+
 /* ----- Blog post wide layout ----- */
 /* Default body max-width is too narrow for posts with diagrams. */
 /* Override the body constraint only when a blog post page is mounted. */
