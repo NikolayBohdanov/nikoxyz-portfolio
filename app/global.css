@@ -503,8 +503,12 @@ html.dark .prose .diagram-hero-dark { display: block; }
 /* Force explicit foreground color — next-themes keeps both `light` and `dark`
    classes on <html> simultaneously, which defeats Tailwind's `dark:` variant
    (both rules match, last-wins cascade). */
-.five-agents-architecture { color: #171717; }
-html.dark .five-agents-architecture { color: #e5e5e5; }
+.five-agents-architecture,
+.incident-timeline,
+.model-cost-chart { color: #171717; }
+html.dark .five-agents-architecture,
+html.dark .incident-timeline,
+html.dark .model-cost-chart { color: #e5e5e5; }
 
 /* ----- Video hero ----- */
 /* Top margin kept tight so the video sits close to the title/meta block.

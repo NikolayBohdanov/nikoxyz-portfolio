@@ -58,6 +58,8 @@ My first agents died mid-task in the second week. macOS `launchd` kills Claude C
 
 The fix was a supervisor process per agent that catches the restart signal and runs a flush protocol before the kill completes. Not a graceful shutdown; a forced save.
 
+<IncidentTimeline />
+
 ```bash
 # runs before every agent restart
 bun ~/.claude/scripts/flush-helpers.ts \
@@ -106,6 +108,8 @@ Takeaway: subscription pricing decouples your bill from your usage. If you run a
 ## Sonnet over Opus, for most agents
 
 Half my agents don't need Opus. Moving Finance from Opus to Sonnet cut its per-day token consumption by a factor of five, and I couldn't tell the difference in the output for a full month.
+
+<ModelCostChart />
 
 This surprised me. I'd assumed "use the best model" was always right, because that's what the influencers say. It's wrong when the task is deterministic parsing and categorisation, which is what Finance does: read a bank statement, categorise the transactions, roll up by month, flag unusual spikes. Sonnet nails that at a fraction of the cost. Where it fell short was the edge case: a new merchant name Sonnet hadn't seen before got categorised as "other" where Opus would have guessed correctly from context. I fixed that with a three-line override list rather than re-upgrading the whole agent.
 
