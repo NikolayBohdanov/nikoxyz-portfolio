@@ -82,7 +82,7 @@ export default async function Blog({
   })
 
   return (
-    <section>
+    <section data-blog-post-layout>
       <script
         type="application/ld+json"
         suppressHydrationWarning

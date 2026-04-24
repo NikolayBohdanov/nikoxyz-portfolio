@@ -11,6 +11,7 @@ export type PostListItem = {
   publishedAt: string
   summary: string
   category?: CategorySlug
+  readingMinutes: number
 }
 
 type Filter = 'all' | CategorySlug
@@ -66,29 +67,35 @@ export function PostsExplorer({ posts }: { posts: PostListItem[] }) {
           Nothing here yet — first post coming soon.
         </p>
       ) : (
-        <div>
+        <ul className="grid gap-4">
           {visible.map((post) => (
-            <Link
-              key={post.slug}
-              className="flex flex-col space-y-1 mb-4"
-              href={`/blog/${post.slug}`}
-            >
-              <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-                <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
-                  {formatDate(post.publishedAt, false)}
-                </p>
-                <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                  {post.title}
+            <li key={post.slug}>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group block rounded-xl border border-border bg-card p-5 transition-all hover:border-foreground/40 hover:shadow-sm"
+              >
+                <div className="mb-2 flex items-start justify-between gap-3">
+                  <h3 className="text-lg md:text-xl font-semibold tracking-tight leading-snug text-foreground group-hover:text-foreground">
+                    {post.title}
+                  </h3>
                   {post.category && (
-                    <span className="ml-2 text-xs text-muted-foreground">
-                      · {CATEGORIES[post.category]}
+                    <span className="shrink-0 rounded-full border border-border bg-muted/40 px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
+                      {CATEGORIES[post.category]}
                     </span>
                   )}
+                </div>
+                <p className="mb-3 text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                  {post.summary}
                 </p>
-              </div>
-            </Link>
+                <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <time dateTime={post.publishedAt}>{formatDate(post.publishedAt, false)}</time>
+                  <span aria-hidden="true">·</span>
+                  <span>{post.readingMinutes} min read</span>
+                </div>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   )

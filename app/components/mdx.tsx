@@ -6,6 +6,10 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { DiagramHero } from './diagram-hero'
 import { MermaidDiagram } from './mermaid-diagram'
+import { VideoHero } from './video-hero'
+import { FiveAgentsArchitecture } from './diagrams/five-agents-architecture'
+import { IncidentTimeline } from './diagrams/incident-timeline'
+import { ModelCostChart } from './diagrams/model-cost-chart'
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   const headers = data.headers.map((header, index) => (
@@ -57,6 +61,10 @@ const components = {
   Table,
   DiagramHero,
   MermaidDiagram,
+  VideoHero,
+  FiveAgentsArchitecture,
+  IncidentTimeline,
+  ModelCostChart,
 }
 
 const rehypePrettyCodeOptions = {
