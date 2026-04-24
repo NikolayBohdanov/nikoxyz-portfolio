@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
 type Category = 'crypto' | 'agents' | 'products'
@@ -9,6 +10,8 @@ type Project = {
   name: string
   description: string
   link?: string
+  /** Deep-dive blog post linked as "proof in production". */
+  relatedPost?: { href: string; label: string }
   tech: string[]
   status?: 'live' | 'in-progress' | 'private'
 }
@@ -55,6 +58,10 @@ const projects: Record<Category, { label: string; items: Project[] }> = {
         description:
           'Autonomous multi-agent system in production. Orchestrator + 4 domain agents (research, finance, jobs, fitness) with shared semantic memory, supervisors, crash recovery, write-ahead logging. Runs my operating week 24/7.',
         link: 'https://app.nikoxyz.com',
+        relatedPost: {
+          href: '/blog/5-agents-running-my-life',
+          label: 'Read the 3-month production write-up',
+        },
         tech: ['Claude Code', 'MCP', 'Anthropic SDK', 'bge-m3 RAG', 'SQLite'],
         status: 'live',
       },
@@ -157,18 +164,14 @@ export function ProjectsExplorer() {
       {/* Project cards */}
       <div className="grid gap-6">
         {current.items.map((project) => {
-          const Wrapper = project.link ? 'a' : 'div'
-          const wrapperProps = project.link
-            ? { href: project.link, target: '_blank', rel: 'noopener noreferrer' }
-            : {}
+          const hasInteractive = Boolean(project.link || project.relatedPost)
 
           return (
-            <Wrapper
+            <div
               key={project.name}
-              {...wrapperProps}
               className={[
                 'group block p-5 rounded-lg border border-border bg-card transition-all duration-200',
-                project.link
+                hasInteractive
                   ? 'hover:border-primary hover:bg-muted hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1'
                   : '',
               ].join(' ')}
@@ -192,10 +195,29 @@ export function ProjectsExplorer() {
                   </div>
                 </div>
                 {project.link && (
-                  <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors shrink-0 mt-1" />
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.name} — open live`}
+                    className="shrink-0 mt-1"
+                  >
+                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                  </a>
                 )}
               </div>
-            </Wrapper>
+              {project.relatedPost && (
+                <div className="mt-4 pt-4 border-t border-border">
+                  <Link
+                    href={project.relatedPost.href}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:underline"
+                  >
+                    {project.relatedPost.label}
+                    <span aria-hidden className="text-muted-foreground">→</span>
+                  </Link>
+                </div>
+              )}
+            </div>
           )
         })}
       </div>
