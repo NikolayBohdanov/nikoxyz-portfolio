@@ -5,15 +5,13 @@ summary: Five Claude-based agents on a Mac Mini have shipped work for me every d
 category: ai-agents
 ---
 
-## 1. Hook
-
 **Most multi-agent demos survive one run. Mine has shipped work for me every day for three months.**
 
 Five Claude-based agents on a single Mac Mini, ~80 LaunchAgents running in the background, one Telegram bot per agent. They handle my research digests, finances, fitness programming, job pipeline, and the stuff I'd rather not delegate to a calendar reminder. No SaaS bills. No cloud render. No per-token accounting — everything sits on a single Claude Max subscription.
 
 This post is the honest version: what the architecture actually looks like, what broke in production, and what I'd do differently if I started over tomorrow.
 
-## 2. The cast
+## The team
 
 **Jordan** — the orchestrator, named after my dog. Routes every Telegram message to the right specialist, handles personal ops I don't want to delegate, knows how to wake the others when they freeze. Lives at `~/.claude/`. Bot: `@NikoClaudeCode_bot`.
 
@@ -27,7 +25,7 @@ This post is the honest version: what the architecture actually looks like, what
 
 Day-job context: I'm PM at [TwitterScore](https://twitterscore.io) — 35K monitored crypto accounts, 250+ API clients. Building agents at night is where I learn what's shipping-grade.
 
-## 3. How they talk to each other
+## How they talk to each other
 
 Three primitives keep the agents connected.
 
@@ -45,11 +43,11 @@ A typical cross-agent handoff looks like this:
 
 <MermaidDiagram slug="5-agents-message-bus" alt="Sequence diagram of the file-based message bus: Research writes a JSON file, Jobs reads it on its next wake, parses it, and writes a response back" />
 
-## 4. What production actually teaches you
+## What production teaches you
 
-You can ship five agents in a weekend. Keeping them alive for three months teaches you different things. Three specific incidents:
+You can ship five agents in a weekend. Keeping them alive for three months teaches you different things. Three specific incidents.
 
-### 4.1 Supervisors vs. inactivity
+### Supervisors vs. inactivity
 
 Early agents died mid-task because macOS `launchd` killed Claude Code processes during idle periods, wiping the conversation buffer on the way out. Fix: a supervisor per agent that catches restarts and runs a flush-before-restart protocol.
 
@@ -67,7 +65,7 @@ export function extractConversation(jsonlPath: string, maxChars = 80_000): strin
 
 Centralising the flush logic meant one bug fix covered all five agents.
 
-### 4.2 The March 2026 cache bug
+### The March cache bug
 
 In March, Anthropic shipped a prompt-caching change that doubled-to-tripled per-request costs for anyone with a large cached system prompt — see [GH #41930](https://github.com/anthropics/claude-code/issues/41930) and [The Register's write-up](https://www.theregister.com/2026/03/31/anthropic_claude_code_limits/).
 
@@ -83,7 +81,7 @@ A token-drain report now runs nightly on Research. Sample line:
 
 It's caught two regressions since.
 
-### 4.3 Context loss on every restart
+### Context loss on every restart
 
 Even with the flush protocol, restart cadence was high enough (inactivity + crashes + debug reloads) that *"what did we just decide"* would evaporate between conversations. Two fixes in sequence.
 
@@ -91,7 +89,7 @@ First, `/save` — a manual flush command usable from terminal or Telegram at an
 
 Memory flush v3 details are getting their own dedicated post — the mechanics matter enough that it's a piece on its own.
 
-## 5. What I'd do differently
+## What I'd do differently
 
 **Start with the official Anthropic courses, not YouTube.**
 
@@ -105,7 +103,7 @@ After that, every influencer video made sense — I could tell pattern from nois
 
 Ten-plus hours with the source beat a month of pattern-matching in the dark.
 
-## 6. What's next + cost footer
+## What's next
 
 **Current cliff:** giving agents **write access to each other's data** — not just read-only across the shared hub. Right now Finance can read the Jobs Kanban but not update it when an application closes; Research can suggest topics to Jobs but not file them. Biggest unlock + biggest blast-radius risk. Working on scoped write permissions with revertable diffs before I flip any switches.
 

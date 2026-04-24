@@ -499,6 +499,20 @@ html.dark .prose .diagram-hero img {
 html.dark .prose .diagram-hero-light { display: none; }
 html.dark .prose .diagram-hero-dark { display: block; }
 
+/* ----- Blog post wide layout ----- */
+/* Default body max-width is too narrow for posts with diagrams. */
+/* Override the body constraint only when a blog post page is mounted. */
+@media (min-width: 1024px) {
+  body:has([data-blog-post-layout]) {
+    max-width: min(76rem, calc(100vw - 4rem));
+  }
+}
+
+/* Let diagrams + code blocks use a bit more horizontal room than the prose */
+.prose [data-blog-post-wide] {
+  max-width: 100%;
+}
+
 /* ----- MermaidDiagram (pre-rendered SVG pair, local build) ----- */
 
 .prose .mermaid-diagram {
