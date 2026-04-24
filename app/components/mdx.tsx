@@ -7,6 +7,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { DiagramHero } from './diagram-hero'
 import { MermaidDiagram } from './mermaid-diagram'
 import { VideoHero } from './video-hero'
+import { FiveAgentsArchitecture } from './diagrams/five-agents-architecture'
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   const headers = data.headers.map((header, index) => (
@@ -59,6 +60,7 @@ const components = {
   DiagramHero,
   MermaidDiagram,
   VideoHero,
+  FiveAgentsArchitecture,
 }
 
 const rehypePrettyCodeOptions = {

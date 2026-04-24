@@ -37,13 +37,26 @@ Three primitives keep the agents connected.
 
 **Hybrid memory search.** A custom MCP server runs FTS5 keyword + bge-m3 semantic similarity + recency boost over 144 files and ~1700 chunks. Every agent loads the same server in its `.mcp.json`, so any of them can recall *"what did we decide about X last month"* without me re-explaining. Embeddings run locally via Ollama. A deep-dive on this is coming in a separate memory post.
 
-<DiagramHero slug="5-agents-architecture" alt="5-agent system architecture: Jordan orchestrating Research, Finance, Fitness and Jobs agents, connected via a shared file-based message bus and a local memory MCP" />
+<FiveAgentsArchitecture />
 
 No Kafka, no Redis, no cloud database. The entire message layer is a folder on disk; the entire memory layer is SQLite + local vectors. Every part of the system is something I can inspect with `ls` and `cat`.
 
-A typical cross-agent handoff looks like this:
+A typical cross-agent handoff is one file write:
 
-<DiagramHero slug="5-agents-message-bus" alt="Sequence diagram of the file-based message bus: Research writes a JSON file, Jobs reads it on its next wake, parses it, and writes a response back" />
+```json
+// ~/projects/shared-agent-hub/messages/jobs/2026-04-22T09-17-research.json
+{
+  "from": "research",
+  "kind": "candidate-topic",
+  "payload": {
+    "title": "GitHub quietly added a 'coding-agent' review flag",
+    "urls": ["https://github.com/features/..."],
+    "why": "matches jobs-agent's target-keywords config"
+  }
+}
+```
+
+Jobs picks it up on its next wake (every 2h), decides, writes a response JSON back to `messages/research/...`. No queue, no broker, no schema registry — just a folder and a convention.
 
 ## What production teaches you
 
@@ -53,7 +66,14 @@ You can ship five agents in a weekend. Keeping them alive for three months teach
 
 Early agents died mid-task because macOS `launchd` killed Claude Code processes during idle periods, wiping the conversation buffer on the way out. Fix: a supervisor per agent that catches restarts and runs a flush-before-restart protocol.
 
-<DiagramHero slug="5-agents-flush-lifecycle" alt="Sequence diagram showing the supervisor intercepting an inactivity kill from launchd, dumping the JSONL session, summarising via Sonnet, persisting to the memory MCP with WAL retries, then relaunching the agent" />
+```bash
+# runs before every agent restart
+bun ~/.claude/scripts/flush-helpers.ts \
+  --model claude-haiku-4-5 \
+  --max-chars 40000 \
+  --write-memory
+launchctl kickstart -k gui/501/ai.jordan.claude-telegram
+```
 
 Shared helper: `~/.claude/scripts/flush-helpers.ts` (223 lines). The signature every supervisor calls:
 
