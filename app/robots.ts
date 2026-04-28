@@ -5,6 +5,25 @@ export default function robots() {
     rules: [
       {
         userAgent: '*',
+        allow: '/',
+      },
+      {
+        userAgent: [
+          'GPTBot',
+          'ChatGPT-User',
+          'OAI-SearchBot',
+          'ClaudeBot',
+          'anthropic-ai',
+          'Claude-Web',
+          'PerplexityBot',
+          'Perplexity-User',
+          'Google-Extended',
+          'CCBot',
+          'cohere-ai',
+          'Bytespider',
+          'Applebot-Extended',
+        ],
+        allow: '/',
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

@@ -4,10 +4,53 @@ import { Skills } from './components/skills'
 import { Stack } from './components/stack'
 import { Contact } from './components/contact'
 import { Projects } from './components/projects'
+import { JsonLd } from './components/json-ld'
+import { baseUrl } from './sitemap'
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Nikolay Bohdanov',
+  url: baseUrl,
+  image: `${baseUrl}/avatar.png`,
+  jobTitle: 'Senior Product Manager',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'TwitterScore',
+    url: 'https://twitterscore.io',
+  },
+  description:
+    'Product Manager building autonomous AI agents for crypto research and automation. Currently PM at TwitterScore.io. Runs a 5-agent personal system on Claude Code + MCP.',
+  sameAs: [
+    'https://twitter.com/nikolayxyz',
+    'https://github.com/NikolayBohdanov',
+    'https://www.linkedin.com/in/nikolayxyz/',
+  ],
+  knowsAbout: [
+    'Product Management',
+    'AI Agents',
+    'Crypto Research',
+    'Claude Code',
+    'Model Context Protocol',
+    'Tokenomics',
+    'On-chain Analytics',
+  ],
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Nikolay Bohdanov',
+  url: baseUrl,
+  publisher: { '@type': 'Person', name: 'Nikolay Bohdanov' },
+  inLanguage: 'en',
+}
 
 export default function Page() {
   return (
     <section className="relative">
+      <JsonLd id="ld-person" data={personSchema} />
+      <JsonLd id="ld-website" data={websiteSchema} />
       <div className="relative z-10">
         {/* Hero Section */}
         <div className="mb-8 text-center">
