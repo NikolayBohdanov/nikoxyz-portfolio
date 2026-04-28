@@ -6,9 +6,29 @@ import { GeistMono } from 'geist/font/mono'
 import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleTagManager } from '@next/third-parties/google'
 import Footer from './components/footer'
+import { CookieConsent } from './components/cookie-consent'
+import { JsonLd } from './components/json-ld'
 import { baseUrl } from './sitemap'
 import { Providers } from './providers'
+
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Nikolay Bohdanov',
+  legalName: 'Nikolay Bohdanov',
+  url: baseUrl,
+  logo: `${baseUrl}/avatar.png`,
+  founder: { '@type': 'Person', name: 'Nikolay Bohdanov' },
+  sameAs: [
+    'https://twitter.com/nikolayxyz',
+    'https://github.com/NikolayBohdanov',
+    'https://www.linkedin.com/in/nikolayxyz/',
+  ],
+}
 
 export const viewport: Viewport = {
   themeColor: [
@@ -79,6 +99,13 @@ export const metadata: Metadata = {
       'application/feed+json': `${baseUrl}/feed.json`,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION }
+      : undefined,
+  },
 }
 
 const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
@@ -102,6 +129,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/feed+json" title="JSON Feed" href="/feed.json" />
       </head>
       <body className="antialiased max-w-2xl mx-4 mt-8 lg:mx-auto bg-background text-foreground transition-colors duration-200">
+        <JsonLd id="ld-organization" data={organizationSchema} />
         <Providers>
           <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
             <Navbar />
@@ -110,7 +138,9 @@ export default function RootLayout({
             <Analytics />
             <SpeedInsights />
           </main>
+          <CookieConsent />
         </Providers>
+        {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
       </body>
     </html>
   )
