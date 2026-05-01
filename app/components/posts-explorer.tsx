@@ -25,12 +25,10 @@ export function PostsExplorer({ posts }: { posts: PostListItem[] }) {
   const [active, setActive] = useState<Filter>('all')
 
   const counts = useMemo(() => {
-    const map: Record<Filter, number> = {
-      'all': posts.length,
-      'ai-agents': 0,
-      'crypto-defi': 0,
-      'personal': 0,
-    }
+    // Build map dynamically from CATEGORY_ORDER so adding a new category
+    // in categories.ts doesn't require touching this file.
+    const map: Record<Filter, number> = { all: posts.length } as Record<Filter, number>
+    for (const slug of CATEGORY_ORDER) map[slug] = 0
     for (const post of posts) {
       if (post.category) map[post.category] += 1
     }
