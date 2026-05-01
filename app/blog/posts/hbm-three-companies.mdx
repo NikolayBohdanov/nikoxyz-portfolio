@@ -1,0 +1,112 @@
+---
+title: NVIDIA can't ship a single AI chip without these three companies.
+publishedAt: 2026-04-29
+summary: Three companies make the memory NVIDIA can't ship without. The leader posted 72% operating margin in Q1 2026 and the CEO says the shortage runs to 2030.
+category: crypto-defi
+---
+
+NVIDIA can't ship a single AI chip without High Bandwidth Memory (HBM), the dense memory stacks bonded directly onto every modern AI accelerator. Three companies make all of it, and the leader just posted a 72% operating margin in Q1 2026 with the CEO saying the shortage runs to 2030. You can express the trade from a wallet.
+
+<DiagramHero slug="hbm-supply-chain" alt="HBM supply chain — three companies make the memory, two bottlenecks decide the speed" engine="excalidraw" />
+
+## The bottleneck behind every Sonnet token
+
+I run five Claude agents around the clock. Every API call I make lands on a GPU wired to HBM3E memory stacks. The compute conversation focuses on H100 and B200 SKUs. The actual bottleneck is the memory soldered next to them, and the company that makes most of it just put up a number that doesn't appear in commodity industries.
+
+On April 23, SK Hynix released Q1 2026 results: revenue of KRW 52.6 trillion, operating profit of KRW 37.61 trillion, and an operating margin of 72%. Memory was a 30%-margin business for most of the last decade. CEO Chey Tae-won used the same call to say the global wafer shortage will persist until 2030. That's the data point I built this post around.
+
+<SkHynixMargin />
+
+## Three companies, one product, two bottlenecks
+
+Four players make High Bandwidth Memory: SK Hynix at 62% share in Q2 2025, Samsung at 17%, Micron at 21%, and Huawei (China-only).
+
+<HbmMarketShare />
+
+NVIDIA buys roughly 27% of SK Hynix's first-half 2025 revenue. All three Western majors confirm 2026 capacity is sold out. SK Hynix's CFO put it in the earnings call: "We have already sold out our entire 2026 HBM supply." Micron's Sanjay Mehrotra said the same on his last call. Samsung's 2026 booked after Q3 2025 NVIDIA shipments started.
+
+The structural picture:
+
+<HbmCompaniesTable />
+
+Most coverage stops at "ASML is the bottleneck" (ASML makes the EUV lithography machines that print transistors onto silicon). The actual second bottleneck is TSMC's CoWoS, the advanced packaging step where the GPU die and HBM stacks get physically bonded into one chip. Without CoWoS, you have separate silicon pieces that can't talk to each other at AI-training bandwidth. TSMC holds more than half of high-end CoWoS capacity. Alphabet already cut 2026 TPU production targets because of CoWoS scarcity. SK Hynix placed an $8B record EUV order with ASML in 2025, but the real-time bottleneck is packaging, not the printing machines. None of the three memory makers can solve it unilaterally.
+
+## Samsung's 18-month NVIDIA fail
+
+SK Hynix bet narrow on HBM since 2020. While Samsung diversified into smartphones, displays, NAND, Exynos, and HBM in parallel, SK Hynix poured wafer capacity into the niche. By the time the AI buildout hit in 2023, SK Hynix had a head start that compounded.
+
+Samsung tried to qualify HBM3E at NVIDIA from early 2024 and got rejected for 18 months on thermal failures. The fix required a redesign of the DRAM core to handle sustained AI training thermal load. Qualification finally cleared in September 2025 with a 12-Hi HBM3E spec and a 10,000-unit initial contract. Samsung is now converting NAND lines to HBM (margins are 10–20× higher) and announced plans to lift HBM share above 30% by end-2026 with a 50% capacity surge.
+
+**The qualification process IS the moat. You can't fab HBM by deciding to.**
+
+## Micron and the sovereign-supply bet, minus the loans
+
+Micron is the third leg of this stool and a different kind of bet. FY2025 revenue: $37.4B, +49% year-over-year. HBM share: 21% in Q2 2025 per Counterpoint, overtaking Samsung. The company is qualified for HBM4 in NVIDIA's next-gen Vera Rubin platform.
+
+Most coverage of Micron's CHIPS Act package quotes the headline "$13.6B." That number is wrong now. The April 2024 preliminary announcement included $6.1B in direct grants and $7.5B in loans. The December 2024 final award confirmed $6.165B in grants. Micron then declined the loan portion. Effective federal support is approximately $6.4B in grants only (counting a June 2025 incremental $275M tied to the expanded $200B commitment).
+
+The expansion announcement is also smaller than reported. The official NIST/White House figure is $200B over 20 years for New York fabs, split roughly $150B manufacturing plus $50B R&D. There is no "$400B" figure in any official source.
+
+**Sovereign supply is no longer a footnote in chip M&A, and Micron is choosing grants over debt.**
+
+## HBM4 lock-in, the Vera Rubin schedule, and a TurboQuant warning shot
+
+The next round of this market is HBM4. SK Hynix has approximately 70% of NVIDIA's HBM4 orders for the Vera Rubin platform, which launches in the second half of 2026. HBM4E targets Rubin Ultra (late 2027) at 10+ Gbps and 2.5 TB/s per stack. The architecture moves to a 16-Hi 48GB stack with a TSMC 3nm base die.
+
+The risk vector is direct: if NVIDIA's Rubin ramp slips, SK Hynix may cut planned 2026 HBM4 shipments by 20–30%. Multiple Korean outlets reported this scenario in April 2026 as a guidance risk. The feedback loop between NVIDIA's GPU schedule and SK Hynix's quarterly forecast is now too tight to hide.
+
+The other risk is software, not silicon. On March 25, 2026, Google demoed TurboQuant, a technique that compresses the KV cache in transformer attention by approximately 6× with minimal quality loss. SK Hynix dropped 6% in Korean trading. Samsung dropped 5%. Micron fell 4.2% in US trading the next day. The first round of takes called Micron's drop 10%; the verified move was less than half that, but the direction was the right signal.
+
+**Optimization research is the only path to a real memory bear case, and it just happened.**
+
+## Custom silicon is HBM-additive, not HBM-subtractive
+
+The lazy take on AI Twitter is that hyperscaler ASICs (Google TPU, AWS Trainium, Apple Neural Engine) will reduce HBM demand by replacing NVIDIA. The actual data flips this read.
+
+* Google TPU v7 Ironwood ships with **192GB of HBM3e** per chip
+* AWS Trainium3 (3nm, December 2025) carries **144GB HBM3e** at 4.9 TB/s
+* Microsoft Maia 200 carries **216GB HBM3e**, the largest per-chip HBM allocation of any 2026-class accelerator
+
+Hyperscaler ASIC market growth is running at 44.6% CAGR, against 16.1% for GPUs. More ASICs ship more HBM, not less. Custom silicon competes with NVIDIA at the GPU layer; it does not compete with SK Hynix, Samsung, or Micron at the memory layer. The risk to memory demand is software like TurboQuant, not hardware competition between chip designers.
+
+**More ASICs means more HBM. The risk is software, not hardware competition.**
+
+## The picks-and-shovels arb (corrected)
+
+OpenAI closed a $122B funding round at an $852B valuation on March 31, 2026. Annualized revenue ran at approximately $25B by February 2026, up from $13.1B for full-year 2025. Forward P/S at the current run rate works out to roughly 34×. The 85× figure circulating in earlier coverage was based on a $10B revenue assumption that's now stale; the corrected math still produces an unflattering picture.
+
+SK Hynix at $620B market cap, $68B FY25 revenue, and $31.8B FY25 net profit prices at roughly 9× sales and 5–7× forward earnings. The company without which OpenAI literally cannot train its next model trades for one-quarter the multiple of the buyer.
+
+<PsArb />
+
+The TSMC precedent here is the cleanest historical analog. Pre-2020, the market priced TSMC at P/E 15–20× as "just a foundry." Then the iPhone, AMD, and NVIDIA all reached the conclusion that TSMC was the only way to ship advanced silicon. The multiple re-rated, and the cap went from $300B to over $1T+. SK Hynix may be tracing the same arc, three years lagged.
+
+## On-chain expression on Hyperliquid HIP-3
+
+This is the actual edge of the post: the entire thesis is now expressible from a wallet. Most TradFi research stops at "buy the stock"; the SK Hynix thesis specifically is hard to execute from outside Korea — KRX has limited brokerage access for non-residents. Hyperliquid HIP-3 closes that gap.
+
+Hyperliquid HIP-3 launched October 13, 2025, as a builder DEX framework for synthetic equity perpetuals. By March 24, 2026, open interest hit $1.43B, and HIP-3 markets accounted for over 35% of Hyperliquid's total trading volume. The S&P 500 perp on Trade.xyz is officially licensed by S&P Dow Jones Indices, the first formally licensed tokenized equity index product in crypto.
+
+I ran my on-chain coverage parser against the entities in this post. Live results from Hyperliquid HIP-3, xStocks (Backed × Kraken on Solana), Backed Finance (Ethereum/Polygon), and Polymarket:
+
+<OnchainCoverageTable />
+
+For an Asian retail investor without a KRX brokerage account, Hyperliquid HIP-3 is now the only round-the-clock way to express the SK Hynix thesis. The trade is real, live, and small enough that you can move it.
+
+**Pick the trade in TradFi research, execute it in DeFi infrastructure. That's the AI × on-chain edge in one paragraph.**
+
+## What I'd watch from here
+
+Five signals I keep checking:
+
+1. HBM4 ramp pace and any whisper of Rubin Ultra delay (SK Hynix cut signal)
+2. Q1 2026 SK Hynix follow-through (is 72% operating margin sustainable through 2026, or peak earnings?)
+3. Compression-tech announcements (TurboQuant 2.0 is the second leg of any memory bear case)
+4. Hyperliquid HIP-3 open interest as a proxy for retail conviction in this trade
+5. Polymarket NVIDIA close-above markets as a short-cycle sentiment thermometer
+
+Three companies make the memory the AI build runs on, and you can express the whole trade from the same wallet you swap stables in. That's the picture I update every month.
+
+→ [SK Hynix Q1 2026 earnings release](https://news.skhynix.com/sk-hynix-announces-1q26-financial-results/)
+
+*Markets analysis. Not financial advice. Forward P/S, HBM share, and capacity figures verified against issuer filings, TrendForce, Counterpoint, and CompaniesMarketCap as of 2026-04-28. Numbers move; check before you trade.*

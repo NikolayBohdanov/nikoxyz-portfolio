@@ -10,6 +10,11 @@ import { VideoHero } from './video-hero'
 import { FiveAgentsArchitecture } from './diagrams/five-agents-architecture'
 import { IncidentTimeline } from './diagrams/incident-timeline'
 import { ModelCostChart } from './diagrams/model-cost-chart'
+import { HbmMarketShare } from './diagrams/hbm-market-share'
+import { SkHynixMargin } from './diagrams/sk-hynix-margin'
+import { PsArb } from './diagrams/ps-arb'
+import { HbmCompaniesTable } from './diagrams/hbm-companies-table'
+import { OnchainCoverageTable } from './diagrams/onchain-coverage-table'
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   const headers = data.headers.map((header, index) => (
@@ -65,6 +70,11 @@ const components = {
   FiveAgentsArchitecture,
   IncidentTimeline,
   ModelCostChart,
+  HbmMarketShare,
+  SkHynixMargin,
+  PsArb,
+  HbmCompaniesTable,
+  OnchainCoverageTable,
 }
 
 const rehypePrettyCodeOptions = {

@@ -70,6 +70,11 @@ export default async function Blog({
     ? CATEGORIES[post.metadata.category]
     : null
 
+  const articleUrl = `${baseUrl}/blog/${post.slug}`
+  const articleImage = post.metadata.image
+    ? `${baseUrl}${post.metadata.image}`
+    : `${baseUrl}/og?title=${encodeURIComponent(post.metadata.title)}`
+
   const jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -77,11 +82,25 @@ export default async function Blog({
     datePublished: post.metadata.publishedAt,
     dateModified: post.metadata.publishedAt,
     description: post.metadata.summary,
-    image: post.metadata.image
-      ? `${baseUrl}${post.metadata.image}`
-      : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-    url: `${baseUrl}/blog/${post.slug}`,
-    author: { '@type': 'Person', name: 'Nikolay Bohdanov' },
+    image: articleImage,
+    url: articleUrl,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleUrl,
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Nikolay Bohdanov',
+      url: baseUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Nikolay Bohdanov',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/avatar.png`,
+      },
+    },
   })
 
   return (
