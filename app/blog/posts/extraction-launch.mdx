@@ -1,0 +1,127 @@
+---
+title: Extraction — A Weekend Vibe-Coded Crypto Hack Dataset
+publishedAt: 2026-05-04
+summary: Built a searchable visualization of every notable crypto exploit, hack, and major collapse since 2014 with Claude Code over a weekend. 1,189 incidents, $115B total, eight attack vectors. What worked, what surprised me.
+category: crypto-defi
+---
+
+Friday night I had an idea. Sunday night [extraction.work](https://extraction.work) was live. 1,189 crypto incidents catalogued, $115 billion total, deployed on its own domain. No spec, no PM, no roadmap. Vibe-coded with Claude Code. The toy poodle reviewed the architecture from the next chair.
+
+This is what shipped, what surprised me, and what I'd do differently.
+
+## What it is, in 60 seconds
+
+Bubbles. Each bubble is one crypto exploit, hack, or collapse — sized by USD lost, colored by attack vector. Drag-pan the canvas. Click any bubble for the incident modal. Scrub years across the bottom timeline. Filter by vector or chain. Search by name in the top-right. CSV export of all 1,189 records.
+
+The headline numbers update from a static JSON file built at deploy time:
+
+- **1,189 incidents** since 2014
+- **$115 billion** stolen, drained, or "lost"
+- **34 attributed to Lazarus / DPRK** across three confidence tiers
+- **8 attack vectors** with distinct colors
+- **109 records** with on-chain attacker addresses linked to block explorers
+
+No backend. No database. Just JSON + ISR + a d3-force simulation rendering ~1,000 SVG circles.
+
+## Data spine: not just DefiLlama
+
+DefiLlama runs an open Hacks API. It's the obvious starting point. Free, daily-refreshed, ~510 records. So I started there.
+
+Then I noticed gaps. **Mt. Gox 2014. Bitfinex 2016. Terra LUNA / UST May 2022.** None of them in DefiLlama. They're the most-asked-about events in crypto history and the spine doesn't track them.
+
+The fix took three layers:
+
+**Layer 1 — SlowMist Hacked scrape.** SlowMist runs an HTML-only listing of every documented blockchain incident. 2,064 entries. I scraped paginated, parsed with regex, filtered to ≥$100K loss → 1,350 candidates. Fuzzy-deduplicated against the DefiLlama spine: 161 exact-id matches, 377 fuzzy matches, 114 intra-source duplicates. Net new: **666 unique incidents**.
+
+**Layer 2 — Manual curation.** Hand-curated JSON file of 21 incidents that neither source tracks: pre-2016 era (Mt. Gox, Bitstamp 2015, Bitfinex 2016), supply-chain attacks (Ledger Connect Kit, npm @solana/web3.js compromise, CoW Swap domain hijack), and 11 major collapses tagged as a new vector (Terra LUNA, Celsius, BlockFi, FTX customer shortfall, 3AC, Voyager, Genesis, Iron Finance, Babel, Hodlnaut, Prime Trust). Each entry has primary-source URLs from DOJ, SEC, Reuters, or Chainalysis.
+
+**Layer 3 — Tavily for credible sources.** ~70% of records had no per-incident article URL. SlowMist references mostly point to Twitter posts, which 404 over time. I ran every record through Tavily search filtered to credible domains (Rekt, Coindesk, Halborn, Certik, Chainalysis, TRM Labs, Elliptic, FBI/Treasury). Result: **731 records with linked credible sources** — Halborn's Poly Network postmortem, Coindesk's LuBian coverage, Chainalysis on Ronin, etc.
+
+## Lazarus tier system
+
+The hardest signal to get right is attribution. "This was Lazarus" is a strong claim and the source matters.
+
+I split it into three tiers:
+
+- **High** (FBI / Treasury / OFAC / DOJ formal indictment) — 23 incidents
+- **Medium** (Chainalysis / TRM / Elliptic published report, no government sanctions yet) — 10 incidents
+- **Rumor** (community speculation, no primary source) — 1 incident
+
+Each tier has a different bubble appearance:
+
+- **High**: solid 4.5px green stroke + 2s pulse. Loud.
+- **Medium**: 3px stroke + dashed pattern + 4s slower pulse. Quieter signal.
+- **Rumor**: 2px dashed stroke, no pulse, dimmed. Visually says "this is unconfirmed."
+
+So a Bybit 2025 ($1.4B, FBI-attributed) bubble pulses urgent green. A Munchables 2024 ($62M, Chainalysis-only) one pulses softer. A rumored attribution shows a stationary dashed ring.
+
+## Data-quality scars
+
+Three bugs made the project useful in unexpected ways.
+
+**TokenStore $1B → $160M.** SlowMist's 2019 entry showed a $1 billion loss for the TokenStore Chinese Ponzi. I shipped that. A reader (the user — me) noticed the Quadriga Initiative report puts the actual figure at ~$160M. The $1 billion is what the Ponzi *promised in pseudo-balances*, not what was extracted. I built a `data/discovery-corrections.json` manual override file and re-deployed.
+
+**OneCoin $440M → $4.5B.** Same source, opposite bug — SlowMist tagged OneCoin as $440M. SEC and EU prosecutors estimated $4-15B over the scheme's life. Override.
+
+**PolyYeld auto-drop.** SlowMist's PolyYeld Finance 2021 entry showed **$4.9 trillion**. That's the *minted token count*, not USD. The actual USD loss was probably $200K. Auto-dropped via an implausible-amount filter at $10B. Surfaces a list of dropped records for manual review.
+
+These three corrections taught me one thing: **never trust a single-source amount field**. The verify-amounts cross-check script (which Tavily-extracts USD figures from credible sources for the top-100 records by amount) flagged 49 mismatches; ~80% were noise (regex picking up recovery numbers or unrelated mentions), but 5-7 were real bugs.
+
+## Fuzzy dedup is harder than it looks
+
+The merge step takes ~2,000 candidate records (DefiLlama + manual + SlowMist) and produces a single deduplicated dataset.
+
+First version: name similarity ≥50% word-overlap, ±1 month, ±15% amount tolerance.
+
+It produced 262 attacker-address matches. Spot-check: **109 false positives**. "Ronin Bridge" matched "BNB Bridge Exploiter" because they share `bridge` (50% word overlap with both stems containing one shared word).
+
+Fix: substring-containment check first (`"Wormhole"` contains `"Wormhole Bridge"`), then word-overlap requiring at least one **non-generic** match — generic words like `bridge`, `network`, `protocol`, `dao`, `swap`, `finance`, `markets`, `exchange`, `token` are filtered out before comparison. After the change: 109 matches, almost all correct.
+
+Generic-word stop-list:
+
+```ts
+const GENERIC_WORDS = new Set([
+  'bridge', 'finance', 'protocol', 'network', 'capital', 'labs', 'lab',
+  'group', 'dao', 'swap', 'market', 'markets', 'exchange', 'token', 'tokens',
+  'chain', 'foundation', 'global', 'one', 'pro', 'app',
+]);
+```
+
+Lesson: in domain-specific fuzzy matching, the noise ratio of generic shared words is what kills you, not the typos.
+
+## Things that didn't ship
+
+- **Solodit / Immunefi audit data.** Both are SvelteKit SPAs with tRPC backends. Scraping them requires full Playwright browser automation. Estimated ~6 hours of fragile selectors. Deferred — would have been the last 20% of effort for the 10% of records that actually have audit history.
+- **Audit-firm filter chip** — depends on Solodit data, deferred with it.
+- **Per-incident detail pages** (`/incident/[slug]`) — every modal-shown record could be its own SEO-friendly URL with full sources. Not in scope for v1; permalink via `?incident=<id>` query param ships instead.
+
+## Stack
+
+Nothing exotic.
+
+- **Next.js 16** App Router, ISR, MDX (for /about page)
+- **d3-force** for the bubble simulation. Custom collide tuning, adaptive max-radius per visible subset, hard bottom clamp
+- **Tailwind CSS 4** + Geist Sans/Mono, dark/light theme via `next-themes`
+- **Static JSON** at `public/data/hacks.json`, ~1MB minified, 6h ISR
+- **Vercel** for hosting + edge caching + auto-deploy from GitHub
+- **Cloudflare** for DNS (DNS-only, no proxy — Vercel handles SSL + CDN)
+- **Tavily API** (3 dev keys with rotation) for source enrichment
+- **eth-labels.com API** for attacker-address enrichment (109 records)
+- **Google Analytics 4** + Vercel Analytics + Speed Insights
+
+Total git history: ~50 commits across the weekend. Probably 12-14 hours of pair-coding with Claude Code, including the rebrand from `crypto-exploit` (working name) to `Extraction` and Cloudflare domain registration on Sunday afternoon.
+
+## Postscript: what vibe-coding actually looks like
+
+"Vibe-coded with Claude Code" is shorthand for a specific working pattern:
+
+1. **No PRD.** I described the desired output in plain English and adjusted as I saw it render.
+2. **Live feedback loop.** Each new feature got built end-to-end (data → component → CSS → deploy) before moving to the next. No backlog accumulation.
+3. **Claude Code as pair partner**, not autocomplete. Multi-step tasks (Phase A: enrich DefiLlama fields → Phase C: repeat-exploit detection → Phase D.2: Etherscan attackers) ran as agentic subtasks while I reviewed PRs.
+4. **Toy poodle as design lead.** Strong opinions about chair-time. The donate modal in extraction.work's footer carries her likeness as the support button.
+
+Reading the git history back, the surprising thing is how much time went into **data quality** rather than UI. Two-thirds of commits touched the discovery / merge / verify-amounts pipeline. The bubble simulation, modal, and search worked on the first try and barely needed iteration. Garbage-in-garbage-out is the gravity of any data project — the visual layer is the easy part.
+
+If anything from extraction.work is useful — a citation, a memorable bubble, an "oh, that one was huge" moment — the price of a coffee covers a couple weeks of hosting and Tavily quota. Donate buttons in the footer point to BTC, ETH, SOL, and USDC wallet QRs. The toy poodle approves.
+
+[extraction.work](https://extraction.work) · [@nikolayxyz](https://x.com/nikolayxyz)

@@ -116,6 +116,18 @@ const projects: Record<Category, { label: string; items: Project[] }> = {
         tech: ['Next.js', 'Claude API', 'Playwright', 'Python'],
         status: 'live',
       },
+      {
+        name: 'Extraction',
+        description:
+          'Open dataset of every notable crypto exploit, hack, and major collapse since 2014. 1,189 incidents · $115B stolen · 34 Lazarus / DPRK attributed (tiered by source confidence). Bubble visualization sized by USD, colored by attack vector. Search, year-scrubber, attacker-address links to chain explorers, CSV export. Free, ad-free, no paywall.',
+        link: 'https://extraction.work',
+        relatedPost: {
+          href: '/blog/extraction-launch',
+          label: 'How I built it in a weekend →',
+        },
+        tech: ['Next.js', 'd3-force', 'Tavily', 'DefiLlama API', 'Claude Code'],
+        status: 'live',
+      },
     ],
   },
 }

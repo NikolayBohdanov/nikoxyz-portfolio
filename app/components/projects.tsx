@@ -32,6 +32,12 @@ const projects: Project[] = [
     link: 'https://analyzer.nikoxyz.com',
     tech: ['Next.js', 'Claude API', 'Playwright', 'Python'],
   },
+  {
+    name: 'Extraction',
+    description: 'Open dataset of every notable crypto exploit, hack, and major collapse since 2014 — visualized as bubbles, sized by USD lost, colored by attack vector. 1,189 incidents · $115B total · 34 attributed to Lazarus / DPRK with three-tier source confidence. Vibe-coded with Claude Code over a weekend.',
+    link: 'https://extraction.work',
+    tech: ['Next.js', 'd3-force', 'Tavily', 'Claude Code'],
+  },
 ]
 
 export function Projects() {
