@@ -5,11 +5,20 @@ summary: Built a searchable visualization of every notable crypto exploit, hack,
 category: crypto-defi
 ---
 
+<VideoHero slug="extraction-hero" alt="extraction.work intro splash — load the extraction data" />
+
 Friday night I had an idea. Sunday night [extraction.work](https://extraction.work) was live. 1,189 crypto incidents catalogued, $115 billion total, deployed on its own domain. No spec, no PM, no roadmap. Vibe-coded with Claude Code. The toy poodle reviewed the architecture from the next chair.
 
 This is what shipped, what surprised me, and what I'd do differently.
 
 ## What it is, in 60 seconds
+
+<Image
+  src="/diagrams/extraction-bubbles.png"
+  alt="extraction.work bubble canvas at year 2024 — Drift Trade and Kelp shown with the bright-green Lazarus pulse ring; smaller bubbles for Munchables, Truebit, Resolv, Step Finance and dozens more, sized by USD lost and colored by attack vector"
+  width={1600}
+  height={900}
+/>
 
 Bubbles. Each bubble is one crypto exploit, hack, or collapse — sized by USD lost, colored by attack vector. Drag-pan the canvas. Click any bubble for the incident modal. Scrub years across the bottom timeline. Filter by vector or chain. Search by name in the top-right. CSV export of all 1,189 records.
 
