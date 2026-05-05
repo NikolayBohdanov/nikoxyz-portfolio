@@ -28,9 +28,11 @@ export function VideoHero({
         width={width}
         height={height}
         poster={poster ?? `/videos/${slug}-poster.jpg`}
-        controls
-        preload="metadata"
+        autoPlay
+        muted
+        loop
         playsInline
+        preload="metadata"
         aria-label={alt}
         className="video-hero-video"
       />
