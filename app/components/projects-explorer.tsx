@@ -132,7 +132,7 @@ const projects: Record<Category, { label: string; items: Project[] }> = {
   },
 }
 
-const order: Category[] = ['crypto', 'agents', 'products']
+const order: Category[] = ['products', 'agents', 'crypto']
 
 function StatusBadge({ status }: { status?: Project['status'] }) {
   if (!status) return null
@@ -149,7 +149,7 @@ function StatusBadge({ status }: { status?: Project['status'] }) {
 }
 
 export function ProjectsExplorer() {
-  const [active, setActive] = useState<Category>('crypto')
+  const [active, setActive] = useState<Category>('products')
   const current = projects[active]
 
   return (
